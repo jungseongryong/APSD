@@ -1,0 +1,24 @@
+# APSD changes only the SDPO target and its student-dependent gradient.
+defaults:
+  - sdpo
+  - _self_
+
+actor_rollout_ref:
+  actor:
+    policy_loss:
+      loss_mode: apsd
+    self_distillation:
+      full_logit_distillation: true
+      # Inherit SDPO's divergence selector; override alpha independently of
+      # the APSD exponents below (0: forward KL, 0.5: JSD, 1: reverse KL).
+    apsd:
+      alpha_correct: 0.5
+      alpha_incorrect: 1.5
+
+trainer:
+  # Inherit SDPO's training duration (epochs unless steps are overridden).
+  # A null save_freq is safe in final-only mode. For an explicit 80-step run,
+  # this resolves to save_freq=80. Callers must use a unique run directory.
+  save_final_only: true
+  save_freq: ${trainer.total_training_steps}
+  save_best_only: false
