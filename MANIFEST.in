@@ -1,7 +1,0 @@
-include README.md LICENSE
-include requirements.txt
-recursive-include data *.py *.sh *.md
-recursive-include training *.sh
-recursive-include verl *.yaml *.txt *.md *.sh
-include verl/version/version
-global-exclude __pycache__ *.py[cod]
