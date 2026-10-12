@@ -60,7 +60,7 @@ class EngineConfig(BaseConfig):
     infer_micro_batch_size_per_gpu: int = None
     # whether use fuse lm head kernel
     use_fused_kernels: bool = False
-    # TODO (this may conflict with the one in model config)
+    # TODO
     use_remove_padding: bool = True
 
     seed: int = 42

@@ -25,7 +25,7 @@ from verl.utils.device import get_device_name, get_nccl_backend, get_torch_devic
 
 def set_numa_affinity():
     if is_npu_available:
-        # TODO (FightingZhen) libnuma.so is not available in e2e_ascend CI image, remove this code after image update.
+        # TODO libnuma.so is not available in e2e_ascend CI image, remove this code after image update.
         return
 
     initialized = False

@@ -275,7 +275,7 @@ class MemorySnapshotSampler:
         # get the GPU rank on the current process
         rank = os.environ.get("RANK", "0")
         pid = os.getpid()
-        # todo(chenyang): check wether we need to sync all ranks before dump
+        # todo: check wether we need to sync all ranks before dump
         fname = f"{tag}_rank{rank}_pid{pid}.pickle"
         path = out_path / fname
 

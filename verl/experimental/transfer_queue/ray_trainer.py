@@ -246,7 +246,7 @@ def compute_advantage(
             gamma=gamma,
             lam=lam,
         )
-        # TODO (TQ): adapt core_algos.compute_pf_ppo_reweight_data function to support transfer queue
+        # TODO: adapt core_algos.compute_pf_ppo_reweight_data function to support transfer queue
         if config.get("use_pf_ppo", False):
             data = core_algos.compute_pf_ppo_reweight_data(
                 data,
@@ -712,7 +712,7 @@ class RayPPOTrainer:
             if self.val_reward_fn is None:
                 raise ValueError("val_reward_fn must be provided for validation.")
 
-            # TODO (TQ): Support PR [external reference omitted]
+            # TODO: Support PR [external reference omitted]
             compute_reward_fields = [
                 "responses",
                 "prompts",
@@ -913,7 +913,7 @@ class RayPPOTrainer:
                 rm_resource_pool=rm_resource_pool,
             )
 
-            # TODO (TQ): initialize tq during worker init when enable TQ switch is stable
+            # TODO: initialize tq during worker init when enable TQ switch is stable
             self.async_rollout_manager.create_transferqueue_client_for_workers()
 
     def _save_checkpoint(self):
@@ -1262,7 +1262,7 @@ class RayPPOTrainer:
                         timing_raw.update(gen_output_meta.extra_info["timing"])
                         gen_output_meta.extra_info.pop("timing", None)
 
-                    # TODO (TQ): support transfer queue
+                    # TODO: support transfer queue
                     # if self.config.algorithm.adv_estimator == AdvantageEstimator.REMAX:
                     #     if self.reward_fn is None:
                     #         raise ValueError("A reward_fn is required for REMAX advantage estimation.")
@@ -1669,7 +1669,7 @@ class RayPPOTrainer:
 
                 # this is experimental and may be changed/removed in the future in favor of a general-purpose one
                 if isinstance(self.train_dataloader.sampler, AbstractCurriculumSampler):
-                    # TODO (TQ) :support transfer queue
+                    # TODO :support transfer queue
                     self.train_dataloader.sampler.update(batch=batch)
 
                 self.tq_client.clear_samples(batch_meta)
@@ -1696,5 +1696,5 @@ class RayPPOTrainer:
                 # in favor of a general-purpose data buffer pool
                 if hasattr(self.train_dataset, "on_batch_end"):
                     # The dataset may be changed after each training batch
-                    # TODO (TQ): support transfer queue
+                    # TODO: support transfer queue
                     self.train_dataset.on_batch_end(batch=batch)

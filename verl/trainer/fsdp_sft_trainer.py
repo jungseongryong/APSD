@@ -205,7 +205,7 @@ class FSDPSFTTrainer:
         )
 
     def _build_model_optimizer(self):
-        # TODO (zhangchi.usc1992):
+        # TODO:
         # 1. support pretrain from random weights
         # 2. support init directly from sharded weights
         local_model_path = copy_to_local(src=self.config.model.partial_pretrain, verbose=True)

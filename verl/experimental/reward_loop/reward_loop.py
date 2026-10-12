@@ -202,7 +202,7 @@ class RewardLoopWorker:
         engine_name = self.config.reward_model.rollout.name
         model_name = self.config.reward_model.model.path
         if engine_name == "vllm":
-            # TODO (dyy): the "activation" has been changed to "use_activation" in vllm 0.11.2
+            # TODO: the "activation" has been changed to "use_activation" in vllm 0.11.2
             payloads = {
                 "model": model_name,
                 "input": disrm_prompt,

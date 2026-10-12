@@ -67,7 +67,7 @@ class AgentLoopManager(agent_loop.AgentLoopManager):
         timing["agent_loop/tool_calls/max"] = t_tool_calls.max()
         timing["agent_loop/tool_calls/mean"] = t_tool_calls.mean()
 
-        # TODO (TQ): initialize tq during init when enable TQ switch is stable
+        # TODO: initialize tq during init when enable TQ switch is stable
         tq_client = self._create_transferqueue_client()
         # batch sequence generation is bounded by the slowest sample
         slowest = np.argmax(t_generate_sequences + t_tool_calls)
@@ -81,7 +81,7 @@ class AgentLoopManager(agent_loop.AgentLoopManager):
         return timing
 
     def create_transferqueue_client_for_workers(self):
-        # TODO (TQ): initialize tq during worker init when enable TQ switch is stable
+        # TODO: initialize tq during worker init when enable TQ switch is stable
         ray.get([worker.create_transferqueue_client.remote() for worker in self.agent_loop_workers])
 
     def _create_transferqueue_client(self):

@@ -91,7 +91,7 @@ class RewardModelManager:
     def _initialize_router(self):
         worker_urls = [f"http://{server_address}" for server_address in self.server_addresses]
 
-        # TODO (dyy): sglang router is not ready yet.
+        # TODO: sglang router is not ready yet.
         # if self.config.rollout.name == "sglang":
         #     from .router.inner_sglang_router import launch_router_process
         # else:
