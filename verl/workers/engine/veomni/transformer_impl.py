@@ -329,7 +329,7 @@ class EngineEvalModeCtx(BaseEngineCtx):
         assert isinstance(self.engine, VeOmniEngine)
         self.engine.ulysses_sharding_manager.__exit__(exc_type, exc_value, traceback)
 
-        # https://pytorch.org/docs/stable/notes/fsdp.html#fsdp-notes
+        # [external reference omitted]
         # unshard the root FSDP module
         if parallel_state.get_parallel_state().dp_shard_size > 1:
             if fsdp_version(self.engine.module) == 1:

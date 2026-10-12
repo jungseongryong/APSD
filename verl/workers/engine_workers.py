@@ -51,7 +51,7 @@ logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
 
 class TrainingWorker(Worker, DistProfilerExtension):
     """
-    TrainingWorker provides a Tinker-like API (https://thinkingmachines.ai/tinker/) as a RayWorkerGroup
+    TrainingWorker provides a Tinker-like API ([external reference omitted]) as a RayWorkerGroup
     to a single controller. Currently, we only provide more coarse grained APIs,
     and do not provide exact APIs as Tinker does. But this can be added in the future.
     """

@@ -79,7 +79,7 @@ def gptmodel_forward_1f1b_overlap(
             extra_block_kwargs=None,
             inference_context=None,
         ):
-            """patched from https://github.com/NVIDIA/Megatron-LM/blob/core_r0.14.0/megatron/core/models/gpt/gpt_model.py#L412"""
+            """patched from [external reference omitted]"""
             """Postprocesses decoder hidden states to generate logits or compute loss.
 
             Applies Multi-Token Prediction if enabled, generates output logits through
@@ -142,7 +142,7 @@ def gptmodel_forward_1f1b_overlap(
                     mtp_loss = self.compute_language_model_loss(mtp_labels, mtp_logits)
                     mtp_loss = loss_mask * mtp_loss
                     if self.training:
-                        # TODO(shifangx): remove the use of parallel_state here
+                        # TODO: remove the use of parallel_state here
                         # after moving loss logging to loss_func in pretrain_gpt.py
                         MTPLossLoggingHelper.save_loss_to_tracker(
                             torch.sum(mtp_loss) / num_tokens,

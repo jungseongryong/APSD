@@ -27,7 +27,7 @@ n_resp_per_prompt=12
 train_prompt_mini_bsz=32
 
 # Ray
-# RAY_ADDRESS=${RAY_ADDRESS:-"http://localhost:8265"}
+# RAY_ADDRESS=${RAY_ADDRESS:-"[external reference omitted]"}
 # WORKING_DIR=${WORKING_DIR:-"${PWD}"}
 # RUNTIME_ENV=${RUNTIME_ENV:-"${WORKING_DIR}/verl/trainer/runtime_env.yaml"}
 NNODES=${NNODES:-2}
@@ -54,7 +54,7 @@ gen_tp=2
 sp_size=4
 fsdp_size=2
 
-# reference run wandb: https://wandb.ai/verl-org/DAPO%20Reproduction%20on%20verl/runs/ow47vvon?nw=nwusertongyuxuan361
+# reference run wandb: [external reference omitted]
 
 python3 -m verl.trainer.main_ppo \
     data.train_files="${TRAIN_FILE}" \

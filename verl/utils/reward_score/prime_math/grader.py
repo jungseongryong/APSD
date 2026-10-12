@@ -87,9 +87,9 @@
 # limitations under the License.
 """
 This logic is largely copied from the Hendrycks' MATH release (math_equivalence), and borrowed from:
-- https://github.com/microsoft/ToRA/blob/main/src/eval/grader.py
-- https://github.com/microsoft/ProphetNet/tree/master/CRITIC
-- https://github.com/openai/prm800k
+- [external reference omitted]
+- [external reference omitted]
+- [external reference omitted]
 """
 
 import contextlib

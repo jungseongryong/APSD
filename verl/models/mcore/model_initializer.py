@@ -35,7 +35,7 @@ class BaseModelInitializer(ABC):
     @abstractmethod
     def get_transformer_layer_spec(self, vp_stage=None):
         """Get the transformer layer specification.
-        https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/core/models/gpt/gpt_layer_specs.py"""
+        [external reference omitted]"""
         pass
 
     def get_rope_scaling_args(self) -> dict:
@@ -56,7 +56,7 @@ class BaseModelInitializer(ABC):
         **extra_kwargs,
     ) -> GPTModel:
         """Initialize a GPT model with the given configuration.
-        https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/core/models/gpt/gpt_model.py
+        [external reference omitted]
 
         Args:
             pre_process (bool): include embedding layer.

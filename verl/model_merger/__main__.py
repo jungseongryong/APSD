@@ -43,7 +43,7 @@ torchrun --nproc_per_node 1 --nnodes 8 --node_rank ${RANK} -m verl.model_merger 
 
 
 For more details, please refer to documentation:
-https://verl.readthedocs.io/en/latest/advance/checkpoint.html#convert-fsdp-and-megatron-checkpoints-to-huggingface-format-model
+[external reference omitted]
 """
 
 from .base_model_merger import generate_config_from_args, parse_args

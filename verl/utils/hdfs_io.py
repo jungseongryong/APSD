@@ -64,7 +64,7 @@ def makedirs(name, mode=0o777, exist_ok=False, **kwargs) -> None:
 
     """
     if _is_non_local(name):
-        # TODO(haibin.lin):
+        # TODO:
         # - handle OSError for hdfs(?)
         # - support exist_ok for hdfs(?)
         _mkdir(name, **kwargs)
@@ -99,7 +99,7 @@ def copy(src: str, dst: str, **kwargs) -> bool:
 
     """
     if _is_non_local(src) or _is_non_local(dst):
-        # TODO(haibin.lin):
+        # TODO:
         # - handle SameFileError for hdfs files(?)
         # - return file destination for hdfs files
         return _copy(src, dst)

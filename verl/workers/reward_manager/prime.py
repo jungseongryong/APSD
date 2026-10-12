@@ -102,7 +102,7 @@ def run_reward_scoring(evaluation_func, completions, references, tasks, extra_in
 @register("prime")
 class PrimeRewardManager(AbstractRewardManager):
     """
-    The Reward Manager used in https://github.com/PRIME-RL/PRIME
+    The Reward Manager used in [external reference omitted]
     """
 
     def __init__(

@@ -5,7 +5,7 @@ project_name='DAPO'
 exp_name='dapo_qwen2-7B-math_28k_fsdp2_one_step_off_64-64'
 
 # Ray
-# RAY_ADDRESS=${RAY_ADDRESS:-"http://localhost:8265"}
+# RAY_ADDRESS=${RAY_ADDRESS:-"[external reference omitted]"}
 # WORKING_DIR=${WORKING_DIR:-"${PWD}"}
 # RUNTIME_ENV=${RUNTIME_ENV:-"${WORKING_DIR}/verl/trainer/runtime_env.yaml"}
 # Paths

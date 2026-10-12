@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# from https://github.com/PRIME-RL/SimpleVLA-RL/blob/main/verl/utils/vla_utils/openvla_oft/
-# form https://huggingface.co/Haozhan72/Openvla-oft-SFT-libero10-trajall/blob/main/
+# from [external reference omitted]
+# form [external reference omitted]
 
 """
 modeling_prismatic.py
@@ -67,8 +67,8 @@ def unpack_tuple(fn: Callable[[Any], tuple[Any]]) -> Callable[[Any], Any]:
 
 
 # HF Transformers overwrites parameters with names containing `gamma`; we're going to patch VisionBackbone.LayerScale.
-#   =>> TIMM :: https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/vision_transformer.py#L109
-#   =>> Transformers :: https://github.com/huggingface/transformers/blob/main/src/transformers/modeling_utils.py#L3960
+#   =>> TIMM :: [external reference omitted]
+#   =>> Transformers :: [external reference omitted]
 def _ls_new_forward(self, x: torch.Tensor) -> torch.Tensor:
     return x.mul_(self.scale_factor) if self.inplace else x * self.scale_factor
 
@@ -305,7 +305,7 @@ class PrismaticPreTrainedModel(PreTrainedModel):
     def _init_weights(self, module: nn.Module) -> None:
         # Important :: this HF ported version is *not* meant for training from scratch; only inference and fine-tuning!
         #   => As such, this init_weights code is not correct; if training VLMs from scratch, use the main codebase at
-        #      https://github.com/TRI-ML/prismatic-vlms
+        #      [external reference omitted]
         std = (
             self.config.initializer_range
             if hasattr(self.config, "initializer_range")

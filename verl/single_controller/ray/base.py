@@ -429,7 +429,7 @@ class RayWorkerGroup(WorkerGroup):
         # ray.get_actor holds a weak reference to the actor, which causes actors garbage collected unexpectedly
         # if we only hold spawn RayWorkerGroup. By passing actor handle explicitly, spawn RayWorkerGroup have
         # strong reference to these actors.
-        # https://github.com/ray-project/ray/pull/45699
+        # [external reference omitted]
         workers = worker_handles if worker_handles else [ray.get_actor(name=name) for name in worker_names]
         self._workers = workers
         self._world_size = len(worker_names)

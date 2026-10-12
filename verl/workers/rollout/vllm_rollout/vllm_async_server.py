@@ -788,7 +788,7 @@ class vLLMReplica(RolloutReplica):
         Returns:
             dict[str, Any]: Abort result.
         """
-        # TODO(petersh6): we should only abort on the server that has the request.
+        # TODO: we should only abort on the server that has the request.
         results = await asyncio.gather(*[server.abort_request.remote(request_id) for server in self.servers])
 
         for r in results:

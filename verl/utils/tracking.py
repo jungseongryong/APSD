@@ -281,7 +281,7 @@ class _MlflowLoggingAdapter:
 
         self.logger = logging.getLogger(__name__)
         # MLflow metric key validation logic:
-        # https://github.com/mlflow/mlflow/blob/master/mlflow/utils/validation.py#L157C12-L157C44
+        # [external reference omitted]
         # Only characters allowed: slashes, alphanumerics, underscores, periods, dashes, colons,
         # and spaces.
         self._invalid_chars_pattern = re.compile(
@@ -388,7 +388,7 @@ class ValidationGenerationsLogger:
             self.validation_table = wandb.Table(columns=columns)
 
         # Create a new table with same columns and existing data
-        # Workaround for https://github.com/wandb/wandb/issues/2981#issuecomment-1997445737
+        # Workaround for [external reference omitted]
         new_table = wandb.Table(columns=columns, data=self.validation_table.data)
 
         # Add new row with all data
@@ -421,7 +421,7 @@ class ValidationGenerationsLogger:
 
     def log_generations_to_mlflow(self, samples, step):
         """Log validation generation to mlflow as artifacts"""
-        # https://mlflow.org/docs/latest/api_reference/python_api/mlflow.html?highlight=log_artifact#mlflow.log_artifact
+        # [external reference omitted]
 
         import tempfile
 

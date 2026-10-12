@@ -72,7 +72,7 @@ def get_rope_index(
     """
     Gets the position ids for Qwen2-VL, it should be generated before sharding the sequence.
     The batch dim has been removed and the input_ids should be a 1D tensor representing a single example.
-    https://github.com/huggingface/transformers/blob/v4.52.4/src/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py#L1405
+    [external reference omitted]
     """
     spatial_merge_size = processor.image_processor.merge_size
     tokens_per_second = 2
@@ -395,7 +395,7 @@ def _get_input_embeds(
 def process_position_ids(position_ids: torch.Tensor) -> torch.Tensor:
     if position_ids.ndim != 3 or position_ids.size(0) != 4:
         # we concat the text position ids with the 3D vision position ids by default
-        # see https://github.com/huggingface/transformers/pull/39447
+        # see [external reference omitted]
         raise ValueError("position_ids should be a 3D tensor of shape (4, batch_size, seq_length).")
 
     if is_transformers_version_in_range(max_version="4.53.3"):

@@ -90,7 +90,7 @@ RM_EP=${RM_EP:-$COMMON_EP}
 RM_ETP=${RM_ETP:-$COMMON_ETP}
 
 # install mbridge
-# pip3 install git+https://github.com/ISEEKYAN/mbridge
+# pip3 install git+[external reference omitted]
 USE_MBRIDGE=True
 USE_DIST_CKPT=False
 

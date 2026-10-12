@@ -50,7 +50,7 @@ def _get_current_mem_info(unit: str = "GB", precision: int = 2) -> tuple[str]:
     mem_reserved = get_torch_device().memory_reserved()
     # use get_torch_device().mem_get_info to profile device memory
     # since vllm's sleep mode works below pytorch
-    # see https://github.com/vllm-project/vllm/pull/11743#issuecomment-2754338119
+    # see [external reference omitted]
     mem_free, mem_total = get_torch_device().mem_get_info()
     mem_used = mem_total - mem_free
     mem_allocated = f"{mem_allocated / divisor:.{precision}f}"

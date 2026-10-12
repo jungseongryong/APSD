@@ -63,13 +63,13 @@ def karmarkar_karp(seqlen_list: list[int], k_partitions: int, equal_size: bool) 
         list[list[int]]: List of k partitions, each containing indices into seqlen_list.
 
     See Also:
-        https://en.wikipedia.org/wiki/Largest_differencing_method
+        [external reference omitted]
 
     Note:
         When equal_size=True, len(seqlen_list) must be divisible by k_partitions.
     """
 
-    # see: https://en.wikipedia.org/wiki/Largest_differencing_method
+    # see: [external reference omitted]
     class Set:
         def __init__(self) -> None:
             self.sum = 0

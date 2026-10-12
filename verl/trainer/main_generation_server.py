@@ -85,7 +85,7 @@ async def generate_per_replica(server_address, model_path: str, n_samples: int, 
 
     # client = AsyncOpenAI(
     #     api_key="123-abc",
-    #     base_url=f"http://{server_address}/v1",
+    #     base_url=f"[external reference omitted]",
     # )
 
     chat_complete_request = [

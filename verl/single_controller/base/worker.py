@@ -267,7 +267,7 @@ class Worker(WorkerHelper):
             # different meanings. Both env vars accept either a list of ints or a
             # list of UUIDs. The ROCR env var is processed first which then reduces
             # the number of GPUs that HIP can select from.
-            # https://github.com/pytorch/pytorch/pull/144026
+            # [external reference omitted]
             # To avoid the complexity of this, we simply gives out error if both are set
             # (Also to keep consistency with ray's practice with 2.45.0).
             # Otherwise, we will set ROCR_VISIBLE_DEVICES to CUDA_VISIBLE_DEVICES

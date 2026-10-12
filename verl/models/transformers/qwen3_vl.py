@@ -39,7 +39,7 @@ def get_rope_index(
     """
     Gets the position ids for Qwen3-VL, it should be generated before sharding the sequence.
     The batch dim has been removed and the input_ids should be a 1D tensor representing a single example.
-    https://github.com/huggingface/transformers/blob/v4.57.0/src/transformers/models/qwen3_vl/modeling_qwen3_vl.py#L916
+    [external reference omitted]
     """
     spatial_merge_size = processor.image_processor.merge_size
     image_token_id = processor.image_token_id

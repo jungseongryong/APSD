@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# from https://github.com/PRIME-RL/SimpleVLA-RL/blob/main/verl/utils/vla_utils/openvla_oft/
-# form https://huggingface.co/Haozhan72/Openvla-oft-SFT-libero10-trajall/blob/main/
+# from [external reference omitted]
+# form [external reference omitted]
 
 """
 processing_prismatic.py
@@ -188,7 +188,7 @@ class PrismaticImageProcessor(ImageProcessingMixin):
 
 
 # === PrismaticProcessor =>> Wraps both ImageProcessor and Tokenizer ===
-#   =>> https://github.com/huggingface/transformers/blob/main/src/transformers/models/llava/processing_llava.py
+#   =>> [external reference omitted]
 class PrismaticProcessor(ProcessorMixin):
     attributes: ClassVar[list[str]] = ["image_processor", "tokenizer"]
     image_processor_class: str = "AutoImageProcessor"

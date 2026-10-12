@@ -60,7 +60,7 @@ def get_libero_wrist_image(obs: dict[str, np.ndarray], resize_size: int | tuple[
 
 def quat2axisangle(quat: np.ndarray) -> np.ndarray:
     """
-    Copied from robosuite: https://github.com/ARISE-Initiative/robosuite/blob/eafb81f54ffc104f905ee48a16bb15f059176ad3/robosuite/utils/transform_utils.py#L490C1-L512C55
+    Copied from robosuite: [external reference omitted]
 
     Converts quaternion to axis-angle format.
     Returns a unit vector direction scaled by its angle in radians.

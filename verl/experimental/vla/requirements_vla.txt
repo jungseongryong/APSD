@@ -9,7 +9,7 @@ jsonlines
 matplotlib
 rich
 sentencepiece==0.1.99
-# dlimp @ git+https://github.com/moojink/dlimp_openvla
+# dlimp @ git+[external reference omitted]
 diffusers==0.30.3
 imageio
 uvicorn

@@ -36,7 +36,7 @@ class MCPBaseTool(BaseTool):
         self._instance_dict = {}
         self.timeout = config.get("timeout", 30)
 
-        # TODO(hechanghao): create a global client manager to manage the rate limit, client and pool
+        # TODO: create a global client manager to manage the rate limit, client and pool
         logger.info(f"Initialized MCPBaseTool with config: {config}")
 
     def get_openai_tool_schema(self) -> OpenAIFunctionToolSchema:

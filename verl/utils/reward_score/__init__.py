@@ -50,7 +50,7 @@ def default_compute_score(
 
         res = math_reward.compute_score(solution_str, ground_truth)
         # [Optional] Math-Verify Integration
-        # For enhanced accuracy, consider utilizing Math-Verify (https://github.com/huggingface/Math-Verify).
+        # For enhanced accuracy, consider utilizing Math-Verify ([external reference omitted]).
         # Note: Math-Verify needs to be manually installed via pip: `pip install math-verify`.
         # To use it, override the `compute_score` function with the following implementation:
 

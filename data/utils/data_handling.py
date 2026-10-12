@@ -1,7 +1,7 @@
 import os
 
 def jsonl_to_array(jsonl_path, json_path, pretty=True):
-    with open(jsonl_path, "r", encoding="utf-8") as src, \
+    with open(jsonl_path, "r", encoding="utf-8") as src,\
          open(json_path, "w", encoding="utf-8") as dst:
         if pretty:
             indent, sep = "  ", ",\n"

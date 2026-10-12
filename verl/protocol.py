@@ -319,7 +319,7 @@ def collate_fn(x: list["DataProtoItem"]):
 
 @dataclass
 class DataProtoItem:
-    # TODO(zhangchi.usc1992) add consistency check
+    # TODO add consistency check
     batch: TensorDict = None
     non_tensor_batch: dict = field(default_factory=dict)
     meta_info: dict = field(default_factory=dict)
@@ -329,7 +329,7 @@ class DataProtoItem:
 class DataProto:
     """
     A DataProto is a data structure that aims to provide a standard protocol for data exchange between functions.
-    It contains a batch (TensorDict) and a meta_info (Dict). The batch is a TensorDict https://pytorch.org/tensordict/.
+    It contains a batch (TensorDict) and a meta_info (Dict). The batch is a TensorDict [external reference omitted]
     TensorDict allows you to manipulate a dictionary of Tensors like a single Tensor. Ideally, the tensors with the
     same batch size should be put inside batch.
     """
@@ -810,7 +810,7 @@ class DataProto:
 
     def make_iterator(self, mini_batch_size, epochs, seed=None, dataloader_kwargs=None):
         r"""Make an iterator from the DataProto. This is built upon that TensorDict can be used as a normal Pytorch
-        dataset. See https://pytorch.org/tensordict/tutorials/data_fashion for more details.
+        dataset. See [external reference omitted] for more details.
 
 
         Args:

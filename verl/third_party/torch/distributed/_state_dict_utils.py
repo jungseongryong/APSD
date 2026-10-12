@@ -335,7 +335,7 @@ def _gather_state_dict(
         )
         # Call `wait()` to force the tensor to be synchronous with respect
         # to the main stream.
-        # See the discussion in https://github.com/pytorch/pytorch/pull/117799.
+        # See the discussion in [external reference omitted]
         value = value.to_local()
         if isinstance(value, AsyncCollectiveTensor):
             value = value.wait()

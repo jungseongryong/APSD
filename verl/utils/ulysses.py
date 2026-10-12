@@ -13,8 +13,8 @@
 # limitations under the License.
 """
 Utilities for DeepSpeed Ulysses Sequence Parallelism.
-DeepSpeed Ulysses Paper: https://arxiv.org/abs/2309.14509
-Inspired from: https://github.com/deepspeedai/DeepSpeed/blob/master/deepspeed/sequence/layer.py
+DeepSpeed Ulysses Paper: [external reference omitted]
+Inspired from: [external reference omitted]
 """
 
 from typing import Any, Optional

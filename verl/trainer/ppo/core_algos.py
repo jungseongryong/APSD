@@ -152,7 +152,7 @@ def get_adv_estimator_fn(name_or_enum):
 class AdaptiveKLController:
     """
     Adaptive KL controller described in the paper:
-    https://arxiv.org/pdf/1909.08593.pdf
+    [external reference omitted]
     """
 
     def __init__(self, init_kl_coef, target_kl, horizon):
@@ -219,7 +219,7 @@ def compute_gae_advantage_return(
     gamma: torch.Tensor,
     lam: torch.Tensor,
 ):
-    """Adapted from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py
+    """Adapted from [external reference omitted]
 
     Args:
         token_level_rewards: `(torch.Tensor)`
@@ -231,7 +231,7 @@ def compute_gae_advantage_return(
         gamma is `(float)`
             discounted factor used in RL
         lam: `(float)`
-            lambda value when computing Generalized Advantage Estimation (https://arxiv.org/abs/1506.02438)
+            lambda value when computing Generalized Advantage Estimation ([external reference omitted])
 
     Returns:
         advantages: `(torch.Tensor)`
@@ -262,7 +262,7 @@ def compute_gae_advantage_return(
     return advantages, returns
 
 
-# NOTE(sgm): this implementation only consider outcome supervision, where the reward is a scalar.
+# NOTE: this implementation only consider outcome supervision, where the reward is a scalar.
 @register_adv_est(AdvantageEstimator.GRPO)  # or simply: @register_adv_est("grpo")
 def compute_grpo_outcome_advantage(
     token_level_rewards: torch.Tensor,
@@ -292,7 +292,7 @@ def compute_grpo_outcome_advantage(
 
     Note:
         If norm_adv_by_std_in_grpo is True, the advantage is scaled by the std, as in the original GRPO.
-        If False, the advantage is not scaled, as in Dr.GRPO (https://arxiv.org/abs/2503.20783).
+        If False, the advantage is not scaled, as in Dr.GRPO ([external reference omitted]).
 
     Returns:
         advantages: `(torch.Tensor)`
@@ -373,7 +373,7 @@ def compute_grpo_passk_outcome_advantage(
     Compute advantage for Pass@k using a GRPO-style outcome reward formulation.
     Only the best response per group gets a non-zero advantage: r_max - r_second_max.
 
-    Implemented as described in https://arxiv.org/abs/2503.19595.
+    Implemented as described in [external reference omitted]
 
     Args:
         token_level_rewards: (bs, response_length)
@@ -433,7 +433,7 @@ def compute_reinforce_plus_plus_baseline_outcome_advantage(
     **kwargs,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
-    Compute advantage for RF++-baseline (https://arxiv.org/abs/2501.03262), operating only on Outcome reward
+    Compute advantage for RF++-baseline ([external reference omitted]), operating only on Outcome reward
     (with only one scalar reward for each response).
 
     Args:
@@ -485,7 +485,7 @@ def compute_rloo_outcome_advantage(
     **kwargs,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
-    Compute advantage for RLOO based on https://arxiv.org/abs/2402.14740
+    Compute advantage for RLOO based on [external reference omitted]
 
     Args:
         token_level_rewards: `(torch.Tensor)`
@@ -537,7 +537,7 @@ def compute_opo_outcome_advantage(
     **kwargs,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
-    Compute advantage for OPO based on https://arxiv.org/pdf/2505.23585
+    Compute advantage for OPO based on [external reference omitted]
 
     Args:
         token_level_rewards: `(torch.Tensor)`
@@ -587,7 +587,7 @@ def compute_reinforce_plus_plus_outcome_advantage(
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Compute advantage for REINFORCE++.
-    This implementation is based on the paper: https://arxiv.org/abs/2501.03262
+    This implementation is based on the paper: [external reference omitted]
 
     Args:
         token_level_rewards: `(torch.Tensor)`
@@ -630,7 +630,7 @@ def compute_remax_outcome_advantage(
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Compute advantage for ReMax, operating only on Outcome reward
-    This implementation is based on the paper: https://arxiv.org/abs/2310.10505
+    This implementation is based on the paper: [external reference omitted]
     (with only one scalar reward for each response).
 
     Args:
@@ -729,7 +729,7 @@ def compute_rloo_vectorized_outcome_advantage(
     **kwargs,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
-    Compute advantage for RLOO based on https://arxiv.org/abs/2402.14740
+    Compute advantage for RLOO based on [external reference omitted]
 
     Args:
         token_level_rewards: `(torch.Tensor)`
@@ -1204,7 +1204,7 @@ def compute_policy_loss(
     Compute the clipped policy objective and related metrics for PPO.
 
     Adapted from
-    https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py#L1122
+    [external reference omitted]
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1216,14 +1216,14 @@ def compute_policy_loss(
         response_mask (torch.Tensor):
             Mask indicating which tokens to include in the loss, shape (batch_size, response_length).
         cliprange (float, optional):
-            Clipping parameter ε for standard PPO. See https://arxiv.org/abs/1707.06347.
+            Clipping parameter ε for standard PPO. See [external reference omitted]
             Defaults to None (must be provided).
         cliprange_low (float, optional):
             Lower clip range for dual-clip PPO. Defaults to same as `cliprange`.
         cliprange_high (float, optional):
             Upper clip range for dual-clip PPO. Defaults to same as `cliprange`.
         clip_ratio_c (float, optional):
-            Lower bound of the ratio for dual-clip PPO. See https://arxiv.org/pdf/1912.09729.
+            Lower bound of the ratio for dual-clip PPO. See [external reference omitted]
             Defaults to 3.0.
         loss_agg_mode (str, optional):
             Aggregation mode for `agg_loss`. Defaults to "token-mean".
@@ -1278,7 +1278,7 @@ def compute_policy_loss_vanilla(
     Compute the clipped policy objective and related metrics for PPO.
 
     Adapted from
-    https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py#L1122
+    [external reference omitted]
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1299,10 +1299,10 @@ def compute_policy_loss_vanilla(
 
     assert config is not None
     assert not isinstance(config, AlgoConfig)
-    clip_ratio = config.clip_ratio  # Clipping parameter ε for standard PPO. See https://arxiv.org/abs/1707.06347.
+    clip_ratio = config.clip_ratio  # Clipping parameter ε for standard PPO. See [external reference omitted]
     clip_ratio_low = config.clip_ratio_low if config.clip_ratio_low is not None else clip_ratio
     clip_ratio_high = config.clip_ratio_high if config.clip_ratio_high is not None else clip_ratio
-    clip_ratio_c = config.get(  # Lower bound of the ratio for dual-clip PPO. See https://arxiv.org/pdf/1912.09729.
+    clip_ratio_c = config.get(  # Lower bound of the ratio for dual-clip PPO. See [external reference omitted]
         "clip_ratio_c", 3.0
     )
 
@@ -1371,7 +1371,7 @@ def compute_policy_loss_gspo(
     """
     Compute the clipped policy objective and related metrics for GSPO.
 
-    See https://arxiv.org/pdf/2507.18071 for more details.
+    See [external reference omitted] for more details.
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1447,7 +1447,7 @@ def compute_policy_loss_sapo(
     """
     Compute the smoothed policy objective and related metrics for SAPO.
 
-    See https://arxiv.org/pdf/2511.20347 for more details.
+    See [external reference omitted] for more details.
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1530,7 +1530,7 @@ def compute_policy_loss_gpg(
     rollout_is_weights: torch.Tensor | None = None,
 ) -> tuple[torch.Tensor, dict[str, Any]]:
     """Adapted from
-    https://github.com/AMAP-ML/GPG/blob/main/VisualThinker-R1-Zero/src/open-r1-multimodal/src/open_r1/trainer/grpo_trainer.py#L495
+    [external reference omitted]
     Args:
         log_prob: `(torch.Tensor)`
             shape: (bs, response_length)
@@ -1569,7 +1569,7 @@ def compute_policy_loss_clip_cov(
     Compute the clipped policy objective and related metrics for Clip-Cov.
 
     Adapted from
-    https://github.com/PRIME-RL/Entropy-Mechanism-of-RL/blob/main/verl/trainer/ppo/core_algos.py
+    [external reference omitted]
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1581,7 +1581,7 @@ def compute_policy_loss_clip_cov(
         response_mask (torch.Tensor):
             Mask indicating which tokens to include in the loss, shape (batch_size, response_length).
         cliprange (float, optional):
-            Clipping parameter ε for standard PPO. See https://arxiv.org/abs/1707.06347.
+            Clipping parameter ε for standard PPO. See [external reference omitted]
             Defaults to None (must be provided).
         cliprange_low (float, optional):
             Lower clip range for dual-clip PPO. Defaults to same as `cliprange`.
@@ -1674,7 +1674,7 @@ def compute_policy_loss_kl_cov(
     Compute the clipped policy objective and related metrics for Clip-Cov.
 
     Adapted from
-    https://github.com/PRIME-RL/Entropy-Mechanism-of-RL/blob/main/verl/trainer/ppo/core_algos.py
+    [external reference omitted]
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1753,8 +1753,8 @@ def compute_policy_loss_geo_mean(
     """
     Compute the clipped policy objective and related metrics for GMPO.
 
-    Adapted from paper https://arxiv.org/abs/2507.20673
-    https://github.com/callsys/GMPO/blob/main/train_zero_math_gmpo.py
+    Adapted from paper [external reference omitted]
+    [external reference omitted]
 
     Args:
         old_log_prob (torch.Tensor):
@@ -1771,7 +1771,7 @@ def compute_policy_loss_geo_mean(
 
     assert config is not None
     assert not isinstance(config, AlgoConfig)
-    clip_ratio = config.clip_ratio  # Clipping parameter. See https://arxiv.org/abs/1707.06347.
+    clip_ratio = config.clip_ratio  # Clipping parameter. See [external reference omitted]
     clip_ratio_low = config.clip_ratio_low if config.clip_ratio_low is not None else clip_ratio
     clip_ratio_high = config.clip_ratio_high if config.clip_ratio_high is not None else clip_ratio
 
@@ -1839,7 +1839,7 @@ def compute_policy_loss_cispo(
     """
     Compute the clipped policy objective and related metrics for CISPO.
 
-    See https://arxiv.org/pdf/2506.13585 for more details.
+    See [external reference omitted] for more details.
     """
 
     assert config is not None
@@ -1915,7 +1915,7 @@ def compute_value_loss(
     """
     Compute the clipped value-function loss for PPO.
 
-    Copied from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py#L1151
+    Copied from [external reference omitted]
 
     Args:
         vpreds (torch.FloatTensor):
@@ -1949,7 +1949,7 @@ def compute_value_loss(
 def kl_penalty(logprob: torch.FloatTensor, ref_logprob: torch.FloatTensor, kl_penalty) -> torch.FloatTensor:
     """Compute KL divergence given logprob and ref_logprob. Optionally using straight through to bind k2 on other
     kl penalty compute method for unbiased KL gradient estimation.
-    See more description in http://joschu.net/blog/kl-approx.html
+    See more description in [external reference omitted]
 
     Args:
         logprob:
@@ -1974,8 +1974,8 @@ def kl_penalty(logprob: torch.FloatTensor, ref_logprob: torch.FloatTensor, kl_pe
 
 def kl_penalty_forward(logprob: torch.FloatTensor, ref_logprob: torch.FloatTensor, kl_penalty) -> torch.FloatTensor:
     """Compute KL divergence given logprob and ref_logprob.
-    Copied from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py#L1104
-    See more description in http://joschu.net/blog/kl-approx.html
+    Copied from [external reference omitted]
+    See more description in [external reference omitted]
 
     Args:
         logprob:
@@ -1993,8 +1993,8 @@ def kl_penalty_forward(logprob: torch.FloatTensor, ref_logprob: torch.FloatTenso
     if kl_penalty in ("mse", "k2"):
         return 0.5 * (logprob - ref_logprob).square()
 
-    # J. Schulman. Approximating kl divergence, 2020.
-    # # URL http://joschu.net/blog/kl-approx.html.
+    # Approximating KL divergence, 2020.
+    # # URL [external reference omitted]
     if kl_penalty in ("low_var_kl", "k3"):
         kl = ref_logprob - logprob
         # For numerical stability

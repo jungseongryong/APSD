@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# from https://github.com/PRIME-RL/SimpleVLA-RL/blob/main/verl/utils/vla_utils/openvla_oft/
+# from [external reference omitted]
 
 """Utils for training/fine-tuning scripts."""
 

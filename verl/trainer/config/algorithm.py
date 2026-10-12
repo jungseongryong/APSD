@@ -69,7 +69,7 @@ class RolloutCorrectionConfig(BaseConfig):
 
     For more details, see:
     "When Speed Kills Stability: Demystifying RL Collapse from the Training-Inference Mismatch"
-    https://richardli.xyz/rl-collapse
+    [external reference omitted]
 
     This typed config replaces the old dict-based approach and provides:
     - Type safety and validation
@@ -167,7 +167,7 @@ class RolloutCorrectionConfig(BaseConfig):
     Reference:
         Liu, Li, Fu, Wang, Liu, Shen (2025)
         "When Speed Kills Stability: Demystifying RL Collapse from the Training-Inference Mismatch"
-        https://richardli.xyz/rl-collapse
+        [external reference omitted]
     """
 
     rollout_is: Optional[str] = "sequence"

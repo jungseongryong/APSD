@@ -156,7 +156,7 @@ def _fused_GPTModel_forward(
 ) -> CausalLMOutputForPPO:
     """
     Patch self._postprocess in forward for GPT models to enable fused kernel support.
-    https://github.com/NVIDIA/Megatron-LM/blob/core_v0.13.0/megatron/core/models/gpt/gpt_model.py
+    [external reference omitted]
 
     TODO: Currently we still need to patch `forward` because we need to pass `temperature`
     explicitly to `self._postprocess` when calling, maybe there can be a better way to handle this?

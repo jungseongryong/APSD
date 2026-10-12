@@ -48,7 +48,7 @@ from verl.utils.ray_utils import get_event_loop
 try:
     from vllm.worker.worker_base import WorkerWrapperBase
 except ModuleNotFoundError:
-    # https://github.com/vllm-project/vllm/commit/6a113d9aed8221a9c234535958e70e34ab6cac5b
+    # [external reference omitted]
     from vllm.v1.worker.worker_base import WorkerWrapperBase
 
 from packaging import version as vs
@@ -86,7 +86,7 @@ if is_version_ge(pkg="vllm", minver="0.7.3"):
 
 
 def _check_vllm_version_for_sleep_level():
-    # https://github.com/vllm-project/vllm/issues/25171
+    # [external reference omitted]
     minver = "0.11.0"
     current_version = get_version("vllm")
     if not current_version:
@@ -95,7 +95,7 @@ def _check_vllm_version_for_sleep_level():
     return vs.parse(current_version) >= vs.parse(minver)
 
 
-# https://github.com/vllm-project/vllm/issues/13175
+# [external reference omitted]
 def _monkey_patch_compute_logits(model, vocab_size: int):
     original_compute_logits = model.compute_logits
 
@@ -183,7 +183,7 @@ class vLLMAsyncRollout(BaseRollout):
         vLLM changed WorkerWrapperBase signature (i.e., removing vllm_config from
         __init__). We keep a small runtime fallback to support multiple versions.
 
-        https://github.com/vllm-project/vllm/commit/aafd4d23548ae54adeca1d4898cc15a4d2c390ac
+        [external reference omitted]
         """
         try:
             return WorkerWrapperBase(vllm_config=self.vllm_config)
@@ -307,7 +307,7 @@ class vLLMAsyncRollout(BaseRollout):
             "The vLLM SPMD mode was retired in PR #4411. For batch generation, "
             "please use the async server interface via vLLMReplica and AsyncLLMServerManager, "
             "or use HFRollout for synchronous generation. "
-            "See https://github.com/volcengine/verl/issues/4682 for more details."
+            "See [external reference omitted] for more details."
         )
 
     # ==================== server mode public methods ====================

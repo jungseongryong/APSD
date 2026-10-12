@@ -325,7 +325,7 @@ class AgentLoopBase(ABC):
 """Agent loop registry: key is agent_name, value is a dict of agent loop config
 used by hydra.utils.instantiate to initialize agent loop instance.
 
-https://hydra.cc/docs/advanced/instantiate_objects/overview/
+[external reference omitted]
 """
 _agent_loop_registry: dict[str, dict] = {}
 
@@ -539,7 +539,7 @@ class AgentLoopWorker:
         # - position_ids: sequential positions for tokens, starting at 0
         #   e.g., [0,0,0,0,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,0,0,0]
 
-        # TODO(wuxibin): remove padding and use tensordict.
+        # TODO: remove padding and use tensordict.
         self.tokenizer.padding_side = "left"
         prompt_output = self.tokenizer.pad(
             {"input_ids": output.prompt_ids},

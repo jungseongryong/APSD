@@ -18,7 +18,7 @@ import traceback
 from .utils import check_correctness
 
 """
-Verify code correctness using the Sandbox Fusion (https://github.com/bytedance/SandboxFusion).
+Verify code correctness using the Sandbox Fusion ([external reference omitted]).
 You can either deploy the sandbox_fusion service yourself or use the
 FaaS service provided by public cloud, eg: volcengine.com.
 """

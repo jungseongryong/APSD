@@ -52,7 +52,7 @@ def hf_tokenizer(name_or_path, correct_pad_token=True, correct_gemma2=True, **kw
 
     if correct_gemma2 and isinstance(name_or_path, str) and "gemma-2-2b-it" in name_or_path:
         # the EOS token in gemma2 is ambiguious, which may worsen RL performance.
-        # https://huggingface.co/google/gemma-2-2b-it/commit/17a01657f5c87135bcdd0ec7abb4b2dece04408a
+        # [external reference omitted]
         warnings.warn(
             "Found gemma-2-2b-it tokenizer. Set eos_token and eos_token_id to <end_of_turn> and 107.", stacklevel=1
         )
@@ -102,11 +102,11 @@ def hf_processor(name_or_path, **kwargs):
                 raise ValueError(f"Unsupported processor type: {processor.__class__.__name__}")
     except Exception as e:
         processor = None
-        # TODO(haibin.lin): try-catch should be removed after adding transformer version req to setup.py to avoid
+        # TODO: try-catch should be removed after adding transformer version req to setup.py to avoid
         # silent failure
         warnings.warn(f"Failed to create processor: {e}. This may affect multimodal processing", stacklevel=1)
     # Avoid load tokenizer, see:
-    # https://github.com/huggingface/transformers/blob/v4.49.0/src/transformers/models/auto/processing_auto.py#L344
+    # [external reference omitted]
     if processor is not None and "Processor" not in processor.__class__.__name__:
         processor = None
     return processor

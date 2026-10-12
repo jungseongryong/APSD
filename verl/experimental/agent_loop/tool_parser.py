@@ -74,7 +74,7 @@ class ToolParser(ABC):
 
 @ToolParser.register("hermes")
 class HermesToolParser(ToolParser):
-    """Adapted from https://github.com/vllm-project/vllm/blob/v0.9.1/vllm/entrypoints/openai/tool_parsers/hermes_tool_parser.py"""
+    """Adapted from [external reference omitted]"""
 
     def __init__(self, tokenizer) -> None:
         super().__init__(tokenizer)
@@ -110,7 +110,7 @@ class HermesToolParser(ToolParser):
 class GptOssToolParser(ToolParser):
     """
     Tool parser for gpt-oss model.
-    Adapted from https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/function_call/gpt_oss_detector.py
+    Adapted from [external reference omitted]
 
     Args:
         tokenizer: The tokenizer to use.
@@ -118,7 +118,7 @@ class GptOssToolParser(ToolParser):
 
     def __init__(self, tokenizer) -> None:
         super().__init__(tokenizer)
-        # check https://cookbook.openai.com/articles/openai-harmony for more details.
+        # check [external reference omitted] for more details.
         self.cot_pattern = regex.compile(
             r"<\|start\|>assistant<\|channel\|>analysis<\|message\|>.*?<\|end\|>", regex.DOTALL
         )

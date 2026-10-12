@@ -30,7 +30,7 @@ class BasePPOActor(ABC):
 
         Args:
             config (DictConfig): a config passed to the PPOActor. We expect the type to be
-                DictConfig (https://omegaconf.readthedocs.io/), but it can be any namedtuple in general.
+                DictConfig ([external reference omitted]), but it can be any namedtuple in general.
         """
         super().__init__()
         self.config = config

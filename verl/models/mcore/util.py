@@ -29,7 +29,7 @@ def preprocess_packed_seqs(
     Preprocess packed sequences
     CP splits sequence into CP*2 chunks, and each GPU gets 2 chunks (GPU0 gets first and last chunks, GPU1
     gets second and second last chunks, and so on), this is for load balancing with causal masking.
-    See https://github.com/NVIDIA/TransformerEngine/issues/1368
+    See [external reference omitted]
     """
     batch_size = input_ids.shape[0]
 
@@ -284,7 +284,7 @@ def preprocess_thd_no_padding(
     Preprocess packed sequences
     CP splits sequence into CP*2 chunks, and each GPU gets 2 chunks (GPU0 gets first and last chunks, GPU1
     gets second and second last chunks, and so on), this is for load balancing with causal masking.
-    See https://github.com/NVIDIA/TransformerEngine/issues/1368
+    See [external reference omitted]
     """
     batch_size = input_ids.shape[0]
 

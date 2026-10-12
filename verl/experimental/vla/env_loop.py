@@ -74,7 +74,7 @@ class EnvLoop:
         self.rollout_wg.switch_to_rollout()
         output = loop.run_until_complete(self.run(prompts, reset_results))
         self.rollout_wg.switch_to_train()
-        # TODO(caiyunke.astra): add timing metrics
+        # TODO: add timing metrics
         return output
 
     async def run(self, prompts: DataProto, reset_results: DataProto) -> DataProto:

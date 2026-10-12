@@ -99,7 +99,7 @@ def set_random_seed(seed, only_rollout=False):
 
         tensor_parallel.model_parallel_cuda_manual_seed(seed)
     # FIXME: torch cumsum not support deterministic (used in vllm sampler),
-    # https://github.com/pytorch/pytorch/issues/89492
+    # [external reference omitted]
     # torch.use_deterministic_algorithms(True, warn_only=True)
     # os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
 
@@ -250,12 +250,12 @@ class ActorRolloutRefWorker(MegatronWorker, DistProfilerExtension):
         self._is_rollout = self.role in ["rollout", "actor_rollout", "actor_rollout_ref"]
         self._is_ref = self.role in ["ref", "actor_rollout_ref"]
 
-        # NOTE(sgm): We utilize colocate WorkerGroup by default.
+        # NOTE: We utilize colocate WorkerGroup by default.
         # As a result, Workers for different model share the same process.
         # Therefore, we only require one distribute initialization.
         # To utilize different parallel strategy in different models:
         # 1, users should disable WorkerDict; 2.assign different ResourcePool to different models,
-        # 3. and apply the following patch in ray==2.10, https://github.com/ray-project/ray/pull/44385
+        # 3. and apply the following patch in ray==2.10, [external reference omitted]
         if not torch.distributed.is_initialized():
             set_numa_affinity()
             rank = int(os.environ["LOCAL_RANK"])
@@ -325,7 +325,7 @@ class ActorRolloutRefWorker(MegatronWorker, DistProfilerExtension):
             self, DistProfiler(rank=self.rank, config=profiler_config, tool_config=tool_config)
         )
 
-        # TODO(sgm): Currently, we only support reference model param offload
+        # TODO: Currently, we only support reference model param offload
         # will support other offload later
         self._is_offload_param = False
         self._is_offload_grad = False
@@ -711,9 +711,9 @@ class ActorRolloutRefWorker(MegatronWorker, DistProfilerExtension):
         # add empty cache after each compute
         aggressive_empty_cache(force_sync=True)
 
-        # FIXME(@wuxibin): megatron+sglang failed with `expandable_segments:True` in ci,
+        # FIXME: megatron+sglang failed with `expandable_segments:True` in ci,
         # can't reproduce it in dev environment, temporary disable it.
-        # https://github.com/volcengine/verl/actions/runs/17382936845/job/49344264323?pr=3285
+        # [external reference omitted]
         if os.environ.get("MEGATRON_CI_DISABLE_EXPANDABLE_SEGMENTS", "0") == "0":
             set_expandable_segments(True)
 
@@ -1015,12 +1015,12 @@ class CriticWorker(MegatronWorker, DistProfilerExtension):
         )
         self.config: McoreCriticConfig = config
 
-        # NOTE(sgm): We utilize colocate WorkerGroup by default.
+        # NOTE: We utilize colocate WorkerGroup by default.
         # As a result, Workers for different model share the same process.
         # Therefore, we only require one distribute initialization.
         # To utilize different parallel strategy in different models:
         # 1, users should disable WorkerDict; 2.assign different ResourcePool to different models,
-        # 3. and apply the following patch in ray==2.10, https://github.com/ray-project/ray/pull/44385
+        # 3. and apply the following patch in ray==2.10, [external reference omitted]
         if not torch.distributed.is_initialized():
             set_numa_affinity()
             rank = int(os.environ["LOCAL_RANK"])
@@ -1064,7 +1064,7 @@ class CriticWorker(MegatronWorker, DistProfilerExtension):
             self.config.ppo_micro_batch_size //= mpu.get_data_parallel_world_size()
             self.config.ppo_micro_batch_size_per_gpu = self.config.ppo_micro_batch_size
 
-        # TODO(sgm): support critic model offload
+        # TODO: support critic model offload
 
     def _build_critic_model_optimizer(
         self, model_path, optim_config, override_model_config, override_transformer_config, override_ddp_config
@@ -1317,12 +1317,12 @@ class RewardModelWorker(MegatronWorker, DistProfilerExtension):
         )
         self.config = config
 
-        # NOTE(sgm): We utilize colocate WorkerGroup by default.
+        # NOTE: We utilize colocate WorkerGroup by default.
         # As a result, Workers for different model share the same process.
         # Therefore, we only require one distribute initialization.
         # To utilize different parallel strategy in different models:
         # 1, users should disable WorkerDict; 2.assign different ResourcePool to different models,
-        # 3. and apply the following patch in ray==2.10, https://github.com/ray-project/ray/pull/44385
+        # 3. and apply the following patch in ray==2.10, [external reference omitted]
         if not torch.distributed.is_initialized():
             set_numa_affinity()
             rank = int(os.environ["LOCAL_RANK"])
@@ -1450,7 +1450,7 @@ class RewardModelWorker(MegatronWorker, DistProfilerExtension):
             override_model_config=override_model_config,
             override_transformer_config=override_transformer_config,
         )
-        # FIXME(sgm): reward model param offload is implemented in MegatronRewardModel
+        # FIXME: reward model param offload is implemented in MegatronRewardModel
         # should be implemented in workers
         self.rm = MegatronRewardModel(
             config=self.config,

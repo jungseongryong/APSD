@@ -228,7 +228,7 @@ def compute_position_id_with_mask(mask):
 
 
 def convert_weight_keys(state_dict: dict[str, torch.Tensor], model: PreTrainedModel):
-    # convert state dict keys: https://github.com/huggingface/transformers/pull/38385
+    # convert state dict keys: [external reference omitted]
     if not hasattr(model, "_checkpoint_conversion_mapping"):
         return state_dict
 
@@ -251,7 +251,7 @@ def convert_weight_keys(state_dict: dict[str, torch.Tensor], model: PreTrainedMo
 def check_exclude_modules(config, key: str) -> bool:
     """
     A helper method to check if the passed module's key name matches any of the exclude modules in the adapter_config.
-    Adapted from https://github.com/huggingface/peft/blob/main/src/peft/tuners/tuners_utils.py
+    Adapted from [external reference omitted]
 
     Args:
         config (`LoraConfig` | `LycorisConfig`): A config to match exclude modules from
@@ -274,7 +274,7 @@ def check_exclude_modules(config, key: str) -> bool:
 def check_target_modules(config, key: str) -> bool:
     """
     A helper method to check if the passed module's key name matches any of the target modules in the adapter_config.
-    Adapted from https://github.com/huggingface/peft/blob/main/src/peft/tuners/tuners_utils.py
+    Adapted from [external reference omitted]
 
     Args:
         config (`LoraConfig` | `LycorisConfig`): A config to match target modules from

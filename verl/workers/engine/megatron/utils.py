@@ -30,6 +30,6 @@ def set_random_seed(seed):
 
         tensor_parallel.model_parallel_cuda_manual_seed(seed)
     # FIXME: torch cumsum not support deterministic (used in vllm sampler),
-    # https://github.com/pytorch/pytorch/issues/89492
+    # [external reference omitted]
     # torch.use_deterministic_algorithms(True, warn_only=True)
     # os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'

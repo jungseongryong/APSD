@@ -43,7 +43,7 @@ logger = logging.getLogger(__file__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
 
 
-# patch to avoid issue https://github.com/sgl-project/sglang/issues/6723
+# patch to avoid issue [external reference omitted]
 def _set_envs_and_config(server_args: ServerArgs):
     # Set global environments
     os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -65,7 +65,7 @@ def _set_envs_and_config(server_args: ServerArgs):
         assert_pkg_version(
             "flashinfer_python",
             "0.2.5",
-            "Please uninstall the old version and reinstall the latest version by following the instructions at https://docs.flashinfer.ai/installation.html.",
+            "Please uninstall the old version and reinstall the latest version by following the instructions at [external reference omitted]",
         )
     if is_cuda():
         assert_pkg_version(
@@ -165,8 +165,8 @@ class ServerAdapter(BaseRollout):
               2. Manually set `CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7`
             when using Tensor Parallelism (TP >= 8).
           - See reference implementations in SLIME:
-            - Main logic: https://github.com/THUDM/slime/blob/fb7605cc5fb09af0f9369d37f7192f12bddee577/slime/ray/ppo_actor.py#L452
-            - runtime envs: https://github.com/THUDM/slime/blob/fb7605cc5fb09af0f9369d37f7192f12bddee577/slime/ray/ppo_actor.py#L39
+            - Main logic: [external reference omitted]
+            - runtime envs: [external reference omitted]
         """
         if self.device_mesh["infer_tp"].get_local_rank() == 0:
             await self._init_server_adapter()

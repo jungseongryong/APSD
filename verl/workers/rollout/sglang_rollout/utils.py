@@ -30,7 +30,7 @@ def broadcast_pyobj(
     src: int = 0,
     force_cpu_device: bool = False,
 ):
-    """from https://github.com/sgl-project/sglang/blob/844e2f227ab0cce6ef818a719170ce37b9eb1e1b/python/sglang/srt/utils.py#L905
+    """from [external reference omitted]
 
     Broadcast inputs from src rank to all other ranks with torch.dist backend.
     The `rank` here refer to the source rank on global process group (regardless

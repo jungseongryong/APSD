@@ -95,11 +95,11 @@ def _ulysses_flash_attention_forward(
     **kwargs,
 ):
     """Insert all-to-all before and after flash attention.
-    DeepSpeed-Ulysses: https://arxiv.org/pdf/2309.14509
+    DeepSpeed-Ulysses: [external reference omitted]
 
     For transformers>=4.55, the flash attention api has changed,
     we need to pass the query_length after doing ulysses all2all.
-    See https://github.com/huggingface/transformers/issues/40399
+    See [external reference omitted]
 
     Args:
         query_states (torch.Tensor): (batch_size, seqlen/sp_size, nheads, head_dim)
@@ -134,7 +134,7 @@ def _ulysses_flash_attention_forward(
 
         # TODO: all_gather position_ids because `prepare_fa2_from_position_ids` needs it, we can eliminate
         # this all_gather by passing cu_seq_lens_q, cu_seq_lens_k, max_length_k, max_length_q explicitly.
-        # https://github.com/huggingface/transformers/pull/33932
+        # [external reference omitted]
 
         # (bsz, seq_len/n) -> (bsz, seq_len)
         position_ids_list = [torch.empty_like(position_ids) for _ in range(ulysses_sp_size)]

@@ -47,4 +47,4 @@ This creates `train.parquet` and `test.parquet` for the training launcher.
 The JSON format includes `idx`, `prompt`, `answer`, `tests`, `description`,
 `kind`, `dataset`, and `elo`; the loading scripts produce this format.
 For ToolUse, obtain the prepared JSON files from the
-[upstream dataset directory](https://github.com/lasgroup/SDPO/tree/main/datasets/tooluse).
+upstream dataset directory.

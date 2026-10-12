@@ -280,7 +280,7 @@ class FSDPEngine(BaseEngine):
         return module
 
     def _build_fsdp_module(self, module):
-        # TODO(ziheng): need to improve
+        # TODO: need to improve
         from torch.distributed.fsdp import CPUOffload, MixedPrecision
 
         from verl.utils.torch_dtypes import PrecisionType
@@ -688,7 +688,7 @@ class EngineEvalModeCtx(BaseEngineCtx):
         assert isinstance(self.engine, FSDPEngine)
         self.engine.ulysses_sharding_manager.__exit__(exc_type, exc_value, traceback)
 
-        # https://pytorch.org/docs/stable/notes/fsdp.html#fsdp-notes
+        # [external reference omitted]
         # unshard the root FSDP module
         if self.engine.engine_config.fsdp_size > 1:
             if fsdp_version(self.engine.module) == 1:

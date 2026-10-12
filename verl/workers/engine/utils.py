@@ -29,7 +29,7 @@ from verl.utils.seqlen_balancing import rearrange_micro_batches, restore_dynamic
 def enable_full_determinism(seed: int):
     """
     Helper function for reproducibility in distributed training.
-    See https://pytorch.org/docs/stable/notes/randomness.html for details.
+    See [external reference omitted] for details.
     """
 
     os.environ["PYTHONHASHSEED"] = str(seed)

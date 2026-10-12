@@ -242,7 +242,7 @@ class MemorySnapshotSampler:
     A utility class that dumps GPU memory snapshots.
     This is useful for monitoring memory usage over a long-running process.
 
-    The dumped files can be visualized with https://docs.pytorch.org/memory_viz
+    The dumped files can be visualized with [external reference omitted]
 
     Args:
         out_dir (str): The directory where the snapshots will be saved.

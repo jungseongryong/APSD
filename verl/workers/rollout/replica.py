@@ -125,7 +125,7 @@ class RolloutReplica(ABC):
         ]
         await self.launch_servers()
 
-    # TODO(sgm): this should be the default solution, but need to make the RolloutMode more clear.
+    # TODO: this should be the default solution, but need to make the RolloutMode more clear.
     async def init_colocated(self, resource_pool: RayResourcePool):
         """Init colocated rollout server, rollout engine and hybrid engine colocated in same ray placement group
         but in separate processes.

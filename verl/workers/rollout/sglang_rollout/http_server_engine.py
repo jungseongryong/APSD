@@ -16,11 +16,11 @@
 #
 # This file is adapted from multiple sources:
 # 1. THUDM/slime project
-#    Original source: https://github.com/THUDM/slime/blob/main/slime/backends/sglang_utils/http_server_engine.py
+#    Original source: [external reference omitted]
 #    Copyright 2025 z.ai
 #    Licensed under the Apache License, Version 2.0
 # 2. SGLang project
-#    Original source: https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/entrypoints/http_server_engine.py
+#    Original source: [external reference omitted]
 #    Copyright 2023-2024 SGLang Team
 #    Licensed under the Apache License, Version 2.0
 #

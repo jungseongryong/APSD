@@ -76,7 +76,7 @@ def logprobs_from_logits(logits, labels, inplace_backward=True):
     Uses a Flash-Attention–based cross-entropy (if available) for efficient backward,
     otherwise falls back to a standard log-softmax+gather approach.
 
-    See: https://github.com/pytorch/pytorch/issues/563#issuecomment-330103591
+    See: [external reference omitted]
 
     Args:
         logits (Tensor): Model outputs of shape (..., vocab_size).
@@ -215,7 +215,7 @@ def clip_by_value(x: torch.Tensor, tensor_min: torch.Tensor, tensor_max: torch.T
         torch.Tensor: Clipped tensor with values in [tensor_min, tensor_max].
 
     See Also:
-        https://github.com/pytorch/pytorch/issues/2793#issuecomment-428784713
+        [external reference omitted]
     """
     clipped = torch.max(torch.min(x, tensor_max), tensor_min)
     return clipped

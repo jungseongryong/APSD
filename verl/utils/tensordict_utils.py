@@ -65,7 +65,7 @@ def assign_non_tensor_stack(tensor_dict: TensorDict, key, val: list):
     """
     # Convert list to NonTensorStack to handle nested structures
     # This wraps each item in NonTensorData to preserve complex objects
-    # TODO(petersh6): can convert back to val directly if we are not accessing .data from the NonTensorStack
+    # TODO: can convert back to val directly if we are not accessing .data from the NonTensorStack
     assert isinstance(tensor_dict, TensorDict), "input dict must be a TensorDict"
     tensor_dict[key] = NonTensorStack.from_list([NonTensorData(item) for item in val])
 
@@ -294,7 +294,7 @@ def chunk_tensordict(td: TensorDict, chunks: int) -> list[TensorDict]:
     Note:
         This is a workaround for PyTorch issue #153238 where torch.chunk()
         doesn't support 3D jagged tensors (e.g., MRoPE position_ids).
-        See: https://github.com/pytorch/pytorch/issues/153238
+        See: [external reference omitted]
     """
     assert isinstance(td, TensorDict) and len(td) % chunks == 0, (
         f"expecting td with length divisible by chunks, but got {len(td)} and {chunks}"

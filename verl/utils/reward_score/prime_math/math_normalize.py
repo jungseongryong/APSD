@@ -34,7 +34,7 @@
 """
 This logic is largely copied from the Hendrycks' MATH release (math_equivalence).
 
-From: https://github.com/openai/prm800k/blob/main/prm800k/grading/math_normalize.py
+From: [external reference omitted]
 """
 
 import re

@@ -1,7 +1,7 @@
 # Copyright 2025 Bytedance Ltd. and/or its affiliates
 #
 # This code is inspired by the torchtune.
-# https://github.com/pytorch/torchtune/blob/main/torchtune/utils/_device.py
+# [external reference omitted]
 #
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # All rights reserved.

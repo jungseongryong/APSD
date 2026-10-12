@@ -393,7 +393,7 @@ def _get_input_embeds(
 def process_position_ids(position_ids: torch.Tensor) -> torch.Tensor:
     if position_ids.ndim != 3 or position_ids.size(0) != 4:
         # we concat the text position ids with the 3D vision position ids by default
-        # see https://github.com/huggingface/transformers/pull/39447
+        # see [external reference omitted]
         raise ValueError("position_ids should be a 3D tensor of shape (4, batch_size, seq_length).")
 
     return position_ids

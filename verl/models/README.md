@@ -19,14 +19,14 @@ Common modelzoo such as huggingface/transformers stuggles when using Pytorch nat
 
 ### Step 3: Add a function to apply tensor parallelism
 - Please follow
-    - https://pytorch.org/docs/stable/distributed.tensor.parallel.html
-    - https://pytorch.org/tutorials/intermediate/TP_tutorial.html
+    - [external reference omitted]
+    - [external reference omitted]
 - General comments
     - Tensor Parallelism in native Pytorch is NOT auto-parallelism. The way it works is to specify how model parameters and input/output reshards using configs. These configs are then registered as hooks to perform input/output resharding before/after model forward.
 
 ### Step 4: Add a function to apply data parallelism
 - Please use FSDP2 APIs
-- See demo here https://github.com/pytorch/torchtitan/blob/main/torchtitan/parallelisms/parallelize_llama.py#L413
+- See demo here [external reference omitted]
 
 ### Step 5: Add a function to apply pipeline parallelism
 - Comes in Pytorch 2.4

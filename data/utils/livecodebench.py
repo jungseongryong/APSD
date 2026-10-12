@@ -31,7 +31,7 @@ def _translate_private_test_cases(encoded_data, fn_name: str):
 
 
 def load_livecodebench(dataset_split: str, until: datetime = None) -> Dataset:
-    ds = load_dataset("livecodebench/code_generation_lite", split="test", revision="refs/pr/6")  # see https://huggingface.co/datasets/livecodebench/code_generation_lite/discussions/5
+    ds = load_dataset("livecodebench/code_generation_lite", split="test", revision="refs/pr/6")  # see [external reference omitted]
 
     if dataset_split == "train":
         ds = ds.filter(lambda ex: ex["contest_date"] < LCB_TRAIN_CUTOFF)

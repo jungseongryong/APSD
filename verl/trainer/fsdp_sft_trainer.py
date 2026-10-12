@@ -13,7 +13,7 @@
 # limitations under the License.
 """
 A lightweight one-file FSDP SFT Trainer
-TODO(zhangchi.usc1992)
+TODO
 - Add calculation of mfu
 - Add validation
 """

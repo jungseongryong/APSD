@@ -173,7 +173,7 @@ def apply_kl_penalty(data: DataProto, kl_ctrl: core_algos.AdaptiveKLController, 
     current_kl = masked_mean(kld, mask=response_mask, axis=-1)  # average over sequence
     current_kl = torch.mean(current_kl, dim=0).item()
 
-    # according to https://github.com/huggingface/trl/blob/951ca1841f29114b969b57b26c7d3e80a39f75a0/trl/trainer/ppo_trainer.py#L837
+    # according to [external reference omitted]
     kl_ctrl.update(current_kl=current_kl, n_steps=batch_size)
 
     metrics = {"actor/reward_kl_penalty": current_kl, "actor/reward_kl_penalty_coeff": beta}
@@ -712,7 +712,7 @@ class RayPPOTrainer:
             if self.val_reward_fn is None:
                 raise ValueError("val_reward_fn must be provided for validation.")
 
-            # TODO (TQ): Support PR https://github.com/volcengine/verl/pull/4581
+            # TODO (TQ): Support PR [external reference omitted]
             compute_reward_fields = [
                 "responses",
                 "prompts",
@@ -847,7 +847,7 @@ class RayPPOTrainer:
         # NOTE: if you want to use a different resource pool for each role, which can support different parallel size,
         # you should not use `create_colocated_worker_cls`.
         # Instead, directly pass different resource pool to different worker groups.
-        # See https://github.com/volcengine/verl/blob/master/examples/ray/tutorial.ipynb for more information.
+        # See [external reference omitted] for more information.
         all_wg = {}
         wg_kwargs = {}  # Setting up kwargs for RayWorkerGroup
         if OmegaConf.select(self.config.trainer, "ray_wait_register_center_timeout") is not None:

@@ -30,7 +30,7 @@ from torch.nn import functional as F
 from .vision_transformer_block import Qwen2_5VisionTransformerBlock as TransformerBlock
 
 
-# copied from https://github.com/huggingface/transformers/blob/main/src/transformers/models/qwen2_vl/modeling_qwen2_vl.py
+# copied from [external reference omitted]
 class PatchEmbed(nn.Module):
     def __init__(
         self,
@@ -57,7 +57,7 @@ class PatchEmbed(nn.Module):
         return hidden_states
 
 
-# copied from https://github.com/huggingface/transformers/blob/main/src/transformers/models/qwen2_vl/modeling_qwen2_vl.py
+# copied from [external reference omitted]
 class VisionRotaryEmbedding(nn.Module):
     def __init__(self, dim: int, theta: float = 10000.0) -> None:
         super().__init__()

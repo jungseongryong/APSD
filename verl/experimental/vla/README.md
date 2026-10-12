@@ -14,8 +14,8 @@ Currently, this code is located independently within the `recipes` folder. Much 
 
 | Simulator | Env Name |  Difference | Benchmark data source |
 | --- | --- | --- | --- | 
-| Mujoco | LiberoEnv | 1. init task from init_states in Libero dataset<br>2. each env can have different tasks | https://github.com/Lifelong-Robot-Learning/LIBERO |
-| IsaacSim | IsaacEnv  | 1. init task from random states, which has more variety than init_states in dataset<br>2. each sim process must using the same task for its envs | https://huggingface.co/datasets/china-sae-robotics/IsaacLabPlayGround_Dataset |
+| Mujoco | LiberoEnv | 1. init task from init_states in Libero dataset<br>2. each env can have different tasks | [external reference omitted] |
+| IsaacSim | IsaacEnv  | 1. init task from random states, which has more variety than init_states in dataset<br>2. each sim process must using the same task for its envs | [external reference omitted] |
 
 ## Hardware Requirements
 
@@ -63,5 +63,5 @@ python -c "import ray; ray.init(address=\"<main_node_ip>:6379\"); print(ray._pri
 *The actual value depends on your GPUs per node, usually <1 - 1e-4 * num_gpus>*
 
 **References:**
-*   [https://github.com/PRIME-RL/SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL)
-*   [https://github.com/RLinf/RLinf](https://github.com/RLinf/RLinf)
+*   [external reference omitted]
+*   [external reference omitted]

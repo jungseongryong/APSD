@@ -163,7 +163,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
-        # TODO(sgm): support FSDP hybrid shard for larger model
+        # TODO: support FSDP hybrid shard for larger model
         self.device_mesh = create_device_mesh(world_size=world_size, fsdp_size=self.config.actor.fsdp_config.fsdp_size)
 
         # build device mesh for Ulysses Sequence Parallel
@@ -196,7 +196,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
         self._is_ref = self.role in ["ref", "actor_rollout_ref"]
         self.use_orig_params = self.config.actor.fsdp_config.get("use_orig_params", False)
 
-        # TODO(haibin.lin):
+        # TODO:
         # As of now the type of config is DictConfig, if we assign config.profiler with ProfilerConfig,
         # it will actually convert the ProfilerConfig dataclass back to a DictConfig.
         # We can still use ProfilerConfig for testing purpose (tests/utils/test_nvtx_profile.py)
@@ -312,7 +312,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
         local_path = model_path
 
         # note that we have to create model in fp32. Otherwise, the optimizer is in bf16, which is incorrect
-        # TODO(zhangchi.usc1992): 1. support create from random initialized model. 2. Support init with FSDP directly
+        # TODO: 1. support create from random initialized model. 2. Support init with FSDP directly
         self.tokenizer = hf_tokenizer(local_path, trust_remote_code=trust_remote_code)
         self.processor = hf_processor(local_path, trust_remote_code=trust_remote_code)
 
@@ -364,7 +364,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
         if self.rank == 0:
             print(f"Model config after override: {actor_model_config}")
 
-        # NOTE(fix me): tie_word_embedding causes meta_tensor init to hang
+        # NOTE: tie_word_embedding causes meta_tensor init to hang
         init_context = get_init_weight_context_manager(
             use_meta_tensor=not actor_model_config.tie_word_embeddings, mesh=self.device_mesh
         )
@@ -427,7 +427,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
                 tiled_mlp_shards=tiled_mlp_shards,
             )
 
-            # some parameters may not in torch_dtype. TODO(zhangchi.usc1992) remove this after we switch to fsdp2
+            # some parameters may not in torch_dtype. TODO remove this after we switch to fsdp2
             actor_module.to(torch_dtype)
 
             if enable_gradient_checkpointing:
@@ -503,7 +503,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
         )
 
         # if self._is_rollout and self.config.rollout.name == "hf":
-        #     # TODO(zhangchi.usc1992, shengguangming) fix me.
+        #     # TODO fix me.
         #     Current, auto_wrap_policy causes HFRollout to hang in Gemma
         #     auto_wrap_policy = None
 
@@ -1064,7 +1064,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
 
         output = output.to("cpu")
 
-        # https://pytorch.org/docs/stable/notes/fsdp.html#fsdp-notes
+        # [external reference omitted]
         # unshard the root FSDP module
         if self.world_size > 1 and fsdp_version(self.actor.actor_module) == 1:
             self.actor.actor_module._handle.reshard(True)
@@ -1099,7 +1099,7 @@ class ActorRolloutRefWorker(Worker, DistProfilerExtension):
 
         output = output.to("cpu")
 
-        # https://pytorch.org/docs/stable/notes/fsdp.html#fsdp-notes
+        # [external reference omitted]
         # unshard the root FSDP module
         if self.world_size > 1:
             if fsdp_version(self.ref_policy.actor_module) == 1:
@@ -1661,7 +1661,7 @@ class CriticWorker(Worker, DistProfilerExtension):
             offload_fsdp_optimizer(self.critic_optimizer)
 
 
-# TODO(sgm): we may need to extract it to dp_reward_model.py
+# TODO: we may need to extract it to dp_reward_model.py
 class RewardModelWorker(Worker, DistProfilerExtension):
     """
     Note that we only implement the reward model that is subclass of AutoModelForTokenClassification.
@@ -2011,7 +2011,7 @@ class RewardModelWorker(Worker, DistProfilerExtension):
             # Note that this is only the scores, may not be the final rewards used to train RL
             output = DataProto.from_dict(tensors={"rm_scores": token_level_scores})
 
-        # https://pytorch.org/docs/stable/notes/fsdp.html#fsdp-notes
+        # [external reference omitted]
         # unshard the root FSDP module
         if self.world_size > 1 and fsdp_version(self.reward_module) == 1:
             self.reward_module._handle.reshard(True)

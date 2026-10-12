@@ -1,6 +1,5 @@
 # Recipe: One Step Off Policy Async Trainer
 
-**Author:** `https://github.com/meituan-search`
 
 Last updated: 07/17/2025.
 
@@ -18,9 +17,8 @@ The more severe the long-tail problem in sample generation, the lower the overal
 For example, in DAPO 32B training, the Rollout phase accounts for approximately 70% of the total time,
 and increasing resources does not reduce the Rollout duration.
 
-![DAPO 32B Math Performance](https://raw.githubusercontent.com/eric-haibin-lin/verl-community/refs/heads/main/docs/dapo_32b_math.png)
 
-> source data: https://wandb.ai/verl-org/DAPO%20Reproduction%20on%20verl/workspace?nw=nwusertongyuxuan361
+
 
 ### Solution
 
@@ -31,10 +29,10 @@ assigning the remainder to training. By reducing resources allocated to the gene
 during long-tail sample generation. Throughout this process, generation and training parameters maintain a one-step off
 policy.
 
-![One Step Off Policy Diagram](https://raw.githubusercontent.com/eric-haibin-lin/verl-community/refs/heads/main/docs/one_step_off_policy.png)
 
-> reference: [AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning](https://arxiv.org/abs/2505.24298)
-> original work: [Asynchronous RLHF: Faster and More Efficient Off-Policy RL for Language Models](https://arxiv.org/abs/2410.18252)
+
+> reference: AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning
+> original work: Asynchronous RLHF: Faster and More Efficient Off-Policy RL for Language Models
 
 Our core contributions include:
 
@@ -69,9 +67,8 @@ Our core contributions include:
 - colocate sync: step ≈ gen + old_log_prob + update_actor
 - one-step-overlap async: step ≈ wait_prev_gen + old_log_prob + update_actor
 
-![One Step Off Megatron Performance](https://raw.githubusercontent.com/eric-haibin-lin/verl-community/refs/heads/main/docs/one_step_off_megatron.png)
 
-> source data: https://wandb.ai/hou-zg-meituan/one-step-off-policy?nw=nwuserhouzg
+
 
 ## Implementation
 
@@ -213,7 +210,7 @@ def sync_rollout_weights(self):
 ### PPO Correctness
 
 To ensure the correctness of the PPO algorithm, we use rollout log_probs for PPO importance sampling.
-For the related algorithm details, please refer to: https://verl.readthedocs.io/en/latest/algo/rollout_corr_math.html
+For the related algorithm details, please refer to: [external reference omitted]
 The default mode is `bypass_ppo_clip`, but other modification strategies can also be explored.
 
 ### AgentLoop

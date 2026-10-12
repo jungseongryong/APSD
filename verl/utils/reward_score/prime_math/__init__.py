@@ -16,7 +16,7 @@ Answer checker API that uses sympy to simplify expressions and check for equalit
 
 Call grade_answer(given_answer: str, ground_truth: str).
 
-FROM: https://github.com/openai/prm800k/blob/main/prm800k/grading/grader.py
+FROM: [external reference omitted]
 """
 
 import contextlib

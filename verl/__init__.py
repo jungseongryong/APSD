@@ -58,7 +58,7 @@ if is_npu_available:
     # >>> nt = torch.nested.nested_tensor([a, b], layout=torch.jagged)
     # ```
     # throws "not supported in npu" on Ascend NPU.
-    # See https://github.com/Ascend/pytorch/blob/294cdf5335439b359991cecc042957458a8d38ae/torch_npu/utils/npu_intercept.py#L109
+    # See [external reference omitted]
     # for details.
 
     import torch
@@ -80,7 +80,7 @@ if is_npu_available:
     # is non-blocking, when transferring data from a device to the CPU, it is necessary to
     # ensure that a batch of data has been completely transferred before being used on the
     # host; otherwise, unexpected precision issues may arise. Tensordict has already noticed
-    # this problem and fixed it. Ref: https://github.com/pytorch/tensordict/issues/725
+    # this problem and fixed it. Ref: [external reference omitted]
     # However, the relevant modifications only cover CUDA and MPS devices and do not take effect
     # for third-party devices such as NPUs. This patch fixes this issue, and the relevant
     # modifications can be removed once the fix is merged into tensordict.

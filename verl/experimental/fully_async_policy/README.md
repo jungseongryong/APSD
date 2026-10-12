@@ -1,6 +1,5 @@
 # Recipe: Fully Async Policy Trainer
 
-**Author:** `https://github.com/meituan-search`
 
 Last updated: 12/25/2025.
 
@@ -28,15 +27,15 @@ rollout training.
 By reasonably setting parameters such as resource allocation and parameter synchronization frequency, fully_async_policy
 can significantly improve training efficiency.
 
-> Magistral https://arxiv.org/abs/2506.10910
+> Magistral [external reference omitted]
 >
 > AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language
-> Reasoning https://arxiv.org/abs/2505.24298
+> Reasoning [external reference omitted]
 >
 > StreamRL: Scalable, Heterogeneous, and Elastic RL for LLMs with Disaggregated Stream
-> Generation https://arxiv.org/abs/2504.15930
+> Generation [external reference omitted]
 >
-> AsyncFlow: An Asynchronous Streaming RL Framework for Efficient LLM Post-Training https://arxiv.org/abs/2507.01663
+> AsyncFlow: An Asynchronous Streaming RL Framework for Efficient LLM Post-Training [external reference omitted]
 >
 
 ### Core Contributions
@@ -46,7 +45,7 @@ can significantly improve training efficiency.
 * **Parallel Generation and Training**: While the Trainer is training, the Rollouter is generating new samples.
 * **Multi-step Asynchronous**: Compared to one step off policy, it supports asynchronous settings from 0.x steps to
   multiple steps, making the asynchronous solution more flexible.
-* **NCCL Parameter Synchronization**: Based on the nccl communication primitive, refer to [checkpoint-engine](https://github.com/MoonshotAI/checkpoint-engine) to
+* **NCCL Parameter Synchronization**: Based on the nccl communication primitive, refer to checkpoint-engine to
   achieve efficient parameter synchronization between Rollouter and Trainer.
 * **Stream Inference and Training**: Rollouter generates data sample by sample, and data transmission uses a single
   sample as the minimum transmission unit.
@@ -65,7 +64,7 @@ The overall architecture of fully_async_policy is shown in the figure below. ful
 parts: Rollouter, MessageQueue, Trainer, and ParameterSynchronizer.
 
 ![fully_async_policy_structure](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_structure.svg?raw=true)
+[external reference omitted])
 
 1. Rollouter generates sequences sample by sample and puts the generated samples into the MessageQueue, with the
    production speed controlled by freshness.
@@ -82,7 +81,7 @@ are used),
 but the overlap in their time consumption reduces the end-to-end time consumption.
 
 ![fully_async_policy_revenue](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_revenue.svg?raw=true)
+[external reference omitted])
 
 ## Usage
 
@@ -172,7 +171,7 @@ https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_a
 
   During the training process, we observed that metrics and response lengths may become unstable in the later
   stages of training. To mitigate this issue, we can use
-  the [Rollout Importance Sampling](https://verl.readthedocs.io/en/latest/advance/rollout_is.html)
+  the Rollout Importance Sampling
   technique for importance sampling. To utilize Rollout Importance Sampling, we need to compute log_prob using
   the training engine, which requires enabling this switch.
   Additionally, when compute_prox_log_prob and Rollout Importance Sampling are enabled under mode d
@@ -248,7 +247,7 @@ https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_a
     3. As shown in figure d;
 
 ![fully_async_policy_mode](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_mode.svg?raw=true)
+[external reference omitted])
 
 ### Key Metrics
 
@@ -382,7 +381,6 @@ Using the `async stream pipeline with stale samples` strategy, we achieved about
 | colocate sync      	 | 128                 	 | 356.30 	 | 177.85 	 | 53.92        	 | 113.81       	  | 8h 36m                 	 | 17h 56m                	 | 1d 5h 6m               	 | 1d 16h 48m             	 | max: 0.3573<br>last: 0.2958  	  |
 | fully_async_policy 	 | 64:64               	 | 150.63 	 | 33.14  	 | \            	 | 113.16       	  | 3h 13m<br>(2.67x)      	 | 6h 46m<br>(2.65x)      	 | 10h 53m<br>(2.67x)     	 | 17h 22m<br>(2.35x)     	 | max: 0.3521<br>last: 0.3094  	  |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-colocate_async?nw=nwuserhouzg
 
 ### 128-card 7B Asynchronous Mode Experiment
 
@@ -397,7 +395,6 @@ partial_rollout, the benefit reaches 2.35x.
 |          `async stream pipeline with stale samples`<br>(+staleness_threshold=0.5)            	          |    	     |    	     |       	        |       	        |            	             |            	             |            	             |            	             |               	                |
 |        `async stream pipeline with partial rollout`<br>(+partial_rollout=True)                 	        | 150.63 	 | 33.14  	 | \            	 | 113.16       	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | 17h 22m                	 | max: 0.3521<br>last: 0.3094 	  |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-stream_stale_partial?nw=nwuserhouzg
 
 ### 128-card Stale Ablation Experiment
 
@@ -415,7 +412,6 @@ Further analysis and optimization are needed for this issue.
 | 0.3                 	 | 146.11 	 | 38.88  	 | \            	 | 103.22       	 | 3h 18m                 	 | 6h 49m                 	 | 11h 40m                	 | 17h 20m                	 | max: 0.3469<br>last: 0.2865 	 |
 | 0.5                 	 | 150.63 	 | 33.14  	 | \            	 | 113.16       	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | 17h 22m                	 | max: 0.3521<br>last: 0.3094 	 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-stream_stale_partial?nw=nwuserhouzg
 
 ### 128-card 7B require_batches Ablation Experiment
 
@@ -429,7 +425,6 @@ training, which in turn affects training time. We verified the impact on results
 | 2               	 | 158.72 	 | 26.32 	 | \            	 | 128.08       	 | 3h 35m                 	 | 7h 38m                 	 | 13h 57m                	 | max: 0.351<br>last: 0.3406  	 |
 | 4               	 | 124.64 	 | 25.62 	 | \            	 | 95.06        	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | max: 0.3521<br>last: 0.3521 	 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-ablation_require_batches?nw=nwuserhouzg
 
 ### 30B Model Mode Experiment
 
@@ -469,7 +464,6 @@ future will be our next focus.
 | Colocate Sync      | 128                 | 497.89 | 348.05 | 28.73        | 20.86 | 86.27        | 13h 36m             | 1d 3h 48m           | 1d 19h 4m           | 2d 11h 39m          | max: 0.3500<br>last: 0.3208 |
 | Fully Async Policy | 96:32               | 282.75 | 22.06  | \            | 50.05 | 206.63       | 6h 45m (2.01x)      | 14h 48m (1.88x)     | 1d 0h 9m (1.78x)    | 1d 10h 41m (1.72x)  | max: 0.3813<br>last: 0.3448 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-30B?nw=nwuserhouzg           | | |
 
 ### checkpoint-engine Ablation Experiment
 We tested the single-step parameter synchronization time of the checkpoint-engine on three models: Qwen2.5-Math-7B, Qwen3-30B-A3B, and Qwen3-235B-A22B, using default checkpoint-engine configurations. All experiments were performed on H20 machines, and the Megatron engine was used for training.
@@ -585,7 +579,6 @@ To validate the performance of `fully_async_policy` on multi-turn tool-calling t
 | colocate           	 | 32                  	 | 375.47  	 | 228.03 	  | 35.19        	 | 111.84       	 | 9h 46m                 	 | 22h 28m                	 | start:0.1078<br>last:0.2056   	 |
 | fully_async_policy 	 | 16: 16              	 | 221.36 	  | 40.59   	 | \            	 | 179.58       	 | 6h 19m<br>(1.55x)      	 | 14h 4m<br>(1.60x)      	 |   start:0.11<br>last:0.2044 	   |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-multiturn-tool?nw=nwuserhouzg
 
 ## Future Plans
 

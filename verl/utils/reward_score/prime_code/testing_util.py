@@ -50,7 +50,7 @@ class CODE_TYPE(Enum):
 
 
 # used to capture stdout as a list
-# from https://stackoverflow.com/a/16571630/6416660
+# from [external reference omitted]
 # alternative use redirect_stdout() from contextlib
 class Capturing(list):
     def __enter__(self):

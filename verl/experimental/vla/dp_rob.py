@@ -129,7 +129,7 @@ class RobDataParallelPPOActor(BasePPOActor):
 
             # assert len(log_probs.shape) == 2 and len(entropy.shape) == 2
 
-            # TODO(caiyunke.astra): check here
+            # TODO: check here
 
             mask = micro_batch["response_mask"]
             log_probs, entropy = self.apply_mask_with_grad_control(log_probs, entropy, mask)
@@ -246,11 +246,11 @@ class RobDataParallelPPOActor(BasePPOActor):
         ]
         batch = data.select(batch_keys=select_keys).batch
         self.pad_token_id = data.meta_info["pad_token_id"]
-        # TODO(caiyunke.astra): check here
+        # TODO: check here
         # assert self.config.ppo_micro_batch_size_per_gpu == 1
 
         # Split to make minibatch iterator for updating the actor
-        # See PPO paper for details. https://arxiv.org/abs/1707.06347
+        # See PPO paper for details. [external reference omitted]
         mini_batches = batch.split(self.config.ppo_mini_batch_size)
         metrics = {}
         for batch_idx, mini_batch in enumerate(mini_batches):

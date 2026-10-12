@@ -78,7 +78,7 @@ elif SUPPORT_CUDA_TMA:
     def alloc_fn(size: int, alignment: int, stream: typing.Optional[int]):
         return torch.empty(size, device=get_device_name(), dtype=torch.int8)
 
-    # https://github.com/triton-lang/triton/commit/43625fc968b693ab51884ca95adbcf3e43483fd0
+    # [external reference omitted]
     # Triton 3.5.0 stores allocators in ContextVar; values do not propagate to new
     # threads by default. Some execution paths in verl use thread pools (e.g.,
     # concurrent.futures), so we set a ContextVar *default* to avoid falling

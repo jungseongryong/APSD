@@ -838,7 +838,7 @@ def default_tp_concat_fn(
     train_params: training parameters
     infer_params (Iterable[torch.Tensor]): a iterator towards list of parameters all-gathered from micro_dp_group
     model_config: huggingface model_config
-    TODO(zhangchi.usc1992): currently, the implementation is adhoc. We can move this function to the model
+    TODO: currently, the implementation is adhoc. We can move this function to the model
     definition so that it is model-agnostic. If the model doesn't implement this function,
     we can throw an error to force user disable TP HybridEngine.
     """
@@ -1059,7 +1059,7 @@ def get_transformer_layer_offset(pipeline_rank, vp_stage, config: TransformerCon
     which is able to fetch layer offset for any pipeline stage.
     The original function only returns the layer offset for current pipeline stage.
 
-    Extension to https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/core/transformer/transformer_layer.py::get_transformer_layer_offset
+    Extension to [external reference omitted]
     """
 
     has_vp_stage = (
@@ -1205,7 +1205,7 @@ def register_megatron_training_hooks(model: list[torch.nn.Module], optimizer):
     except ImportError:
         megatron_FSDP = DDP
 
-    # register some callbacks for megatron training, following https://github.com/NVIDIA/Megatron-LM/blob/core_v0.15.0rc7/megatron/training/training.py#L2039-L2057
+    # register some callbacks for megatron training, following [external reference omitted]
     for one_model in model:
         config = get_model_config(one_model)
         config.grad_scale_func = optimizer.scale_loss

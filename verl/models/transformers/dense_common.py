@@ -41,7 +41,7 @@ def forward_base_model(
 ) -> CausalLMOutputWithPast:
     r"""
     Copy paste LLaMa's forward
-    https://github.com/linkedin/Liger-Kernel/blob/main/src/liger_kernel/transformers/model/llama.py
+    [external reference omitted]
 
     This function should be generic enough for all pure text models.
     ```"""

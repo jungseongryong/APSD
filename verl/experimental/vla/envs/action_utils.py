@@ -86,7 +86,7 @@ def to_tensor(array: dict | torch.Tensor | np.ndarray | list | Any, device: str 
 
 def tile_images(images: list[np.ndarray | torch.Tensor], nrows: int = 1) -> np.ndarray | torch.Tensor:
     """
-    Copied from maniskill https://github.com/haosulab/ManiSkill
+    Copied from maniskill [external reference omitted]
     Tile multiple images to a single image comprised of nrows and an
     appropriate number of columns to fit all the images.
     The images can also be batched (e.g. of shape (B, H, W, C)), but

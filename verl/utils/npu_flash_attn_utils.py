@@ -18,7 +18,7 @@ import torch.nn.functional as F
 from einops import rearrange, repeat
 
 
-# Copied from https://github.com/Dao-AILab/flash-attention/blob/main/flash_attn/bert_padding.py
+# Copied from [external reference omitted]
 class IndexFirstAxis(torch.autograd.Function):
     @staticmethod
     def forward(ctx, input, indices):
@@ -52,7 +52,7 @@ class IndexFirstAxis(torch.autograd.Function):
 index_first_axis = IndexFirstAxis.apply
 
 
-# Copied from https://github.com/Dao-AILab/flash-attention/blob/main/flash_attn/bert_padding.py
+# Copied from [external reference omitted]
 class IndexPutFirstAxis(torch.autograd.Function):
     @staticmethod
     def forward(ctx, values, indices, first_axis_dim):
@@ -77,7 +77,7 @@ class IndexPutFirstAxis(torch.autograd.Function):
 index_put_first_axis = IndexPutFirstAxis.apply
 
 
-# Copied from https://github.com/Dao-AILab/flash-attention/blob/main/flash_attn/bert_padding.py
+# Copied from [external reference omitted]
 def pad_input(hidden_states, indices, batch, seqlen):
     """
     Arguments:
@@ -95,7 +95,7 @@ def pad_input(hidden_states, indices, batch, seqlen):
     return rearrange(output, "(b s) ... -> b s ...", b=batch)
 
 
-# Copied from https://github.com/Dao-AILab/flash-attention/blob/main/flash_attn/bert_padding.py
+# Copied from [external reference omitted]
 def unpad_input(hidden_states, attention_mask, unused_mask=None):
     """
     Arguments:

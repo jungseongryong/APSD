@@ -1,6 +1,5 @@
 # Recipe: Fully Async Policy Trainer
 
-**Author:**  `https://github.com/meituan-search`
 
 Last updated: 12/15/2025.
 
@@ -17,15 +16,15 @@ one_step_off_policy通过分离架构的设计并进行rollout和train一轮异�
 已经基于分离架构实现了异步训练、流式训练，并取得了收益；我们借鉴其方法，在verl上进行了实现。fully_async_policy支持异步、流式、partial
 rollout的训练， 通过合理设置资源分配情况、参数同步频率等参数，fully_async_policy能够显著提高训练效率。
 
-> Magistral https://arxiv.org/abs/2506.10910
+> Magistral [external reference omitted]
 >
 > AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language
-> Reasoning https://arxiv.org/abs/2505.24298
+> Reasoning [external reference omitted]
 >
 > StreamRL: Scalable, Heterogeneous, and Elastic RL for LLMs with Disaggregated Stream
-> Generation https://arxiv.org/abs/2504.15930
+> Generation [external reference omitted]
 >
-> AsyncFlow: An Asynchronous Streaming RL Framework for Efficient LLM Post-Training https://arxiv.org/abs/2507.01663
+> AsyncFlow: An Asynchronous Streaming RL Framework for Efficient LLM Post-Training [external reference omitted]
 >
 
 ### 核心贡献
@@ -33,7 +32,7 @@ rollout的训练， 通过合理设置资源分配情况、参数同步频率等
 * **资源隔离**：与使用hybrid_engine不同，Rollouter和Trainer使用分离的计算资源，需要分别指定所占用的资源。
 * **生成与训练并行**：Trainer在训练的同时，Rollouter在生成新的样本。
 * **多步异步**: 相比 one step off policy 支持0.x步到多步的异步设定，异步方案更加灵活。
-* **nccl参数同步**：基于nccl通信原语，参考[checkpoint-engine](https://github.com/MoonshotAI/checkpoint-engine)实现Rollouter与Trainer间的高效参数同步。
+* **nccl参数同步**：基于nccl通信原语，参考checkpoint-engine实现Rollouter与Trainer间的高效参数同步。
 * **Stream推理与训练**：Rollouter逐样本生成数据，同时数据传输以单个sample为最小传输单位。
 * **异步训练与新鲜度控制**：通过设置参数async_training.staleness_threshold，支持使用旧参数生成的样本进行训练。
 * **PartialRollout**: Rollouter推理过程支持partial rollout逻辑，通过参数同步时，添加`sleep()`和`resume()`
@@ -46,7 +45,7 @@ rollout的训练， 通过合理设置资源分配情况、参数同步频率等
 fully_async_policy的整体架构如下图所示，fully_async_policy主要由Rollouter、MessageQueue、Trainer、ParameterSynchronizer四部分组成。
 
 ![fully_async_policy_structure](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_structure.svg?raw=true)
+[external reference omitted])
 
 1. Rollouter逐样本生成序列，并将生成的sample放入MessageQueue中，生产的速度受新鲜度控制。
 2. MessageQueue用于暂存Rollouter生成的sample。
@@ -59,7 +58,7 @@ https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_a
 但是相互之间的耗时overlap，端到端的耗时反而有所缩减。
 
 ![fully_async_policy_revenue](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_revenue.svg?raw=true)
+[external reference omitted])
 
 ## 使用方式
 
@@ -139,7 +138,7 @@ https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_a
 * `async_training.compute_prox_log_prob` （experimental）
 
   我们在训练过程中，观测到随着训练的进行，训练后期指标和response长度可能会出现不稳定的情况，
-  这里我们可以使用 [Rollout Importance Sampling](https://verl.readthedocs.io/en/latest/advance/rollout_is.html) 的技术进行
+  这里我们可以使用 Rollout Importance Sampling 的技术进行
   重要性采样，缓解这一问题。为了使用 `Rollout Importance Sampling` 我们需要使用训练引擎使用当前的参数版本计算old_log_prob，此开关需要打开。
   此外，在 mode d (async stream pipeline with partial rollout) 的情况下开启 `compute_prox_log_prob` 以及
   `Rollout Importance Sampling` 后，我们的实现已近似Areal的 `Decoupled PPO`。
@@ -199,7 +198,7 @@ https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_a
     3. 如图d所示；
 
 ![fully_async_policy_mode](
-https://github.com/ArronHZG/verl-community/blob/recipe/async_policy/docs/fully_async_policy_mode.svg?raw=true)
+[external reference omitted])
 
 ### 关键指标
 
@@ -318,7 +317,6 @@ python -m recipe.fully_async_policy.fully_async_main \
 | colocate sync      	 | 128                 	 | 356.30 	 | 177.85 	 | 53.92        	 | 113.81       	 | 8h 36m                 	 | 17h 56m                	 | 1d 5h 6m               	 | 1d 16h 48m             	 | max: 0.3573<br>last: 0.2958  	  |
 | fully_async_policy 	 | 64:64               	 | 150.63 	 | 33.14  	 | \            	 | 113.16       	 | 3h 13m<br>(2.67x)      	 | 6h 46m<br>(2.65x)      	 | 10h 53m<br>(2.67x)     	 | 17h 22m<br>(2.35x)     	 | max: 0.3521<br>last: 0.3094  	  |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-colocate_async?nw=nwuserhouzg
 
 ### 128卡 7B 异步模式实验
 
@@ -332,7 +330,6 @@ python -m recipe.fully_async_policy.fully_async_main \
 |        `async stream pipeline with staleness samples`<br>(+staleness_threshold=0.5)            	        |    	     |    	     |       	        |       	        |            	             |            	             |            	             |            	             |               	                |
 |        `async stream pipeline with partial rollout`<br>(+partial_rollout=True)                 	        | 150.63 	 | 33.14  	 | \            	 | 113.16       	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | 17h 22m                	 | max: 0.3521<br>last: 0.3094 	  |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-stream_stale_partial?nw=nwuserhouzg
 
 ### 128卡 stale 消融实验
 
@@ -348,7 +345,6 @@ python -m recipe.fully_async_policy.fully_async_main \
 | 0.3                 	 | 146.11 	 | 38.88  	 | \            	 | 103.22       	 | 3h 18m                 	 | 6h 49m                 	 | 11h 40m                	 | 17h 20m                	 | max: 0.3469<br>last: 0.2865 	 |
 | 0.5                 	 | 150.63 	 | 33.14  	 | \            	 | 113.16       	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | 17h 22m                	 | max: 0.3521<br>last: 0.3094 	 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-ablation_stale?nw=nwuserhouzg
 
 ### 128卡 7B require_batches 消融实验
 
@@ -361,7 +357,6 @@ python -m recipe.fully_async_policy.fully_async_main \
 | 2               	 | 158.72 	 | 26.32 	 | \            	 | 128.08       	 | 3h 35m                 	 | 7h 38m                 	 | 13h 57m                	 | max: 0.351<br>last: 0.3406  	 |
 | 4               	 | 124.64 	 | 25.62 	 | \            	 | 95.06        	 | 3h 13m                 	 | 6h 46m                 	 | 10h 53m                	 | max: 0.3521<br>last: 0.3521 	 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-ablation_require_batches?nw=nwuserhouzg
 
 ### 30B模型模式实验
 
@@ -396,7 +391,6 @@ GPU 数量整除，这使得资源调整的灵活性受到影响。此外，随�
 | Colocate Sync        | 128                | 497.89  | 348.05 | 28.73        | 20.86  | 86.27        | 13h 36m             | 1d 3h 48m           | 1d 19h 4m           | 2d 11h 39m          | max: 0.3500<br>last: 0.3208 |
 | Fully Async Policy   | 96:32              | 282.75  | 22.06  | \            | 50.05  | 206.63       | 6h 45m (2.01x)      | 14h 48m (1.88x)     | 1d 0h 9m (1.78x)    | 1d 10h 41m (1.72x)  | max: 0.3813<br>last: 0.3448 |
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-30B?nw=nwuserhouzg
 
 ### checkpoint-engine参数同步消融实验
 我们在Qwen2.5-Math-7B，Qwen3-30B-A3B和Qwen3-235B-A22B三个模型上测试了checkpoint-engine参数同步的单步参数同步耗时，使用的参数均为默认参数配置。实验均在H20机器上完成，并使用megatron训练引擎。
@@ -503,7 +497,6 @@ GPU 数量整除，这使得资源调整的灵活性受到影响。此外，随�
 | colocate           	| 32                  	| 375.47  	|  228.03 	| 35.19        	| 111.84       	| 9h 46m                 	| 22h 28m                	| start:0.1078<br>last:0.2056   	|
 | fully_async_policy 	| 16: 16              	|  221.36 	| 40.59   	| \            	| 179.58       	| 6h 19m<br>(1.55x)      	| 14h 4m<br>(1.60x)      	| start:0.11<br>last:0.2044 	|
 
-> source data: https://wandb.ai/hou-zg-meituan/fully-async-policy-multiturn-tool?nw=nwuserhouzg
 
 ## 后续计划
 

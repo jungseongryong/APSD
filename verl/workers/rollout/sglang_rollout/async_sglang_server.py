@@ -210,7 +210,7 @@ class SGLangHttpServer:
             args.update({"enable_return_routed_experts": True})
 
         # NOTE: We can't directly call SGLang's launch_server since it's not an async function.
-        # https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/entrypoints/http_server.py
+        # [external reference omitted]
         sglang.srt.entrypoints.engine._set_envs_and_config = _set_envs_and_config
         os.environ["SGLANG_BLOCK_NONZERO_RANK_CHILDREN"] = "0"
         server_args = ServerArgs(**args)
@@ -288,7 +288,7 @@ class SGLangHttpServer:
         video_data: Optional[list[Any]] = None,
     ) -> TokenOutput:
         """Generate sequence with token-in-token-out."""
-        # TODO(@wuxibin): switch to `/generate` http endpoint once multi-modal support ready.
+        # TODO: switch to `/generate` http endpoint once multi-modal support ready.
         max_possible_tokens = self.config.max_model_len - len(prompt_ids)
 
         if max_possible_tokens < 0:

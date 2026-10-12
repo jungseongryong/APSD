@@ -32,7 +32,7 @@ def process_image(image: dict | Image.Image, image_patch_size: int = 14) -> Imag
 
 
 VIDEO_FORMAT_HELP = """Currently, we only support the video formats introduced in qwen2-vl.
-Refer to https://github.com/QwenLM/Qwen2.5-VL?tab=readme-ov-file#using---transformers-to-chat.
+Refer to [external reference omitted]
 
 eg.
 {

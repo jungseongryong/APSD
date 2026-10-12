@@ -215,7 +215,7 @@ agent:
   default_agent_loop: single_turn_agent
 
   # custom agent loop config path, which should contain list of configs to initialize AgentLoop instances.
-  # https://hydra.cc/docs/advanced/instantiate_objects/overview/
+  # [external reference omitted]
   #
   # - name: react_agent
   #   _target_: recipe.langgraph_agent.react_agent_loop.ReactAgentLoop
@@ -240,11 +240,11 @@ agent:
 
 # Specifies the tensor bucket size (in megabytes) for batch weight updates during rollout operations.
 # This parameter controls the maximum payload size for a single weight update request.
-# Reference: https://github.com/volcengine/verl/pull/2418
+# Reference: [external reference omitted]
 # Currently only supported in SGLang rollout implementations
 # Larger values may improve throughput but increase memory overhead
 # Detailed performance comparison:
-# https://github.com/zhaochenyang20/Awesome-ML-SYS-Tutorial/issues/169#issuecomment-3070686720
+# [external reference omitted]
 # Default value (512MB) is optimized for typical GPU memory configurations
 # For the best performance of `rebuild_cuda_tensor`, it is recommended to:
 # 1. Enable `RAY_EXPERIMENTAL_NOSET_CUDA_VISIBLE_DEVICES`

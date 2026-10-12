@@ -56,8 +56,8 @@ tracking metrics to diagnose and correct off-policy issues.
 
 
 ## References
-- "When Speed Kills Stability: Demystifying RL Collapse from the Training-Inference Mismatch": https://richardli.xyz/rl-collapse
-- Off-policy RL (theoretical basis for IS): https://fengyao.notion.site/off-policy-rl
+- "When Speed Kills Stability: Demystifying RL Collapse from the Training-Inference Mismatch": [external reference omitted]
+- Off-policy RL (theoretical basis for IS): [external reference omitted]
 """
 
 import math
@@ -966,7 +966,7 @@ def compute_rollout_correction_and_add_to_batch(
             metrics: Dict of IS and off-policy metrics, all with "rollout_corr/" prefix
 
     Note:
-        The implementation is copied from szrlee <szrlee@gmail.com>.
+        The implementation is adapted from an external source.
     """
     # Get new API parameters directly from config
     rollout_is = rollout_corr_config.get("rollout_is", None)
@@ -1054,7 +1054,7 @@ def apply_bypass_mode(
     Both loss types benefit from rejection sampling (RS) which masks out-of-distribution samples.
 
     Note:
-        The implementation is copied from szrlee <szrlee@gmail.com>.
+        The implementation is adapted from an external source.
     """
     from omegaconf import open_dict
 

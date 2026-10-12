@@ -97,7 +97,7 @@ class CheckpointEngineWithCache(CheckpointEngine):
     """Checkpoint engine with local cache: shm, disk, etc. This allow to synchronize weights without interrupting
     rollout ongoing requests (partial rollout). After requests exhausted, rollout can get weights from local cache.
 
-    Laminar: https://arxiv.org/abs/2510.12633
+    Laminar: [external reference omitted]
     """
 
     @abstractmethod

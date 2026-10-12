@@ -46,7 +46,7 @@ def calculate_token_list_diff(tensor1: torch.Tensor, tensor2: torch.Tensor, mask
 
 
 def pearson_correlation_coefficient(tensor1: torch.Tensor, tensor2: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
-    # implemention of https://arxiv.org/pdf/2506.13585
+    # implemention of [external reference omitted]
     if tensor1.shape != tensor2.shape or mask.shape != tensor1.shape or mask.shape != tensor2.shape:
         return 0
     mt1 = torch.masked_select(tensor1, mask)
@@ -77,7 +77,7 @@ def calculate_debug_metrics(data: DataProto) -> dict:
             "training/rollout_probs_diff_max": max value of logprob diff of rollout vs. actor
             "training/rollout_probs_diff_mean": mean value of logprob diff of rollout vs. actor
             "training/rollout_probs_diff_std": std value of logprob diff of rollout vs. actor
-            "training/rollout_actor_probs_pearson_corr": logprob's pearson corrcoef of rollout vs. actor, reference to https://arxiv.org/pdf/2506.13585
+            "training/rollout_actor_probs_pearson_corr": logprob's pearson corrcoef of rollout vs. actor, reference to [external reference omitted]
     """
 
     rollout_old_log_probs = data.batch["rollout_log_probs"]

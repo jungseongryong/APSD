@@ -86,7 +86,7 @@ class HFRollout(BaseRollout):
                 "top_k": top_k,
                 "temperature": temperature,
                 # already repeat in ray_trainer
-                # https://github.com/volcengine/verl/blob/2fdfbdcba6f2e076f64bc47922d8fe6cf7dc7da5/verl/trainer/ppo/ray_trainer.py#L1117
+                # [external reference omitted]
                 "num_return_sequences": 1,
             }
 
@@ -106,7 +106,7 @@ class HFRollout(BaseRollout):
         param_ctx = contextlib.nullcontext()
 
         if isinstance(self.module, FSDP):
-            # recurse need to set to False according to https://github.com/pytorch/pytorch/issues/100069
+            # recurse need to set to False according to [external reference omitted]
             param_ctx = FSDP.summon_full_params(self.module, writeback=False, recurse=False)
         with param_ctx, torch.autocast(device_type=get_device_name(), dtype=torch.bfloat16):
             output = self.module.generate(

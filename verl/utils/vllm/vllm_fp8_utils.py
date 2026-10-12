@@ -37,7 +37,7 @@ FP8_BLOCK_QUANT_KWARGS = {
 }
 
 
-# Ref: https://github.com/NVIDIA-NeMo/RL/commit/bc24887c72a6e1b2699a228bc87c588546dfe6b7
+# Ref: [external reference omitted]
 @dataclass()
 class FP8State:
     # A cache of fp8 parameter names, we can check this cache to see if a

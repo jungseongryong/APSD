@@ -13,7 +13,7 @@
 # limitations under the License.
 """
 This logic is largely copied from:
-- https://github.com/MoonshotAI/checkpoint-engine
+- [external reference omitted]
 """
 
 import concurrent.futures

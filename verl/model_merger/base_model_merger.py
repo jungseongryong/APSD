@@ -218,7 +218,7 @@ class BaseModelMerger(ABC):
     def patch_model_generation_config(self, model):
         """
         The generation_config created from model config may be different to the pretrained model,
-        this may lead to error when generating: https://github.com/volcengine/verl/issues/1246
+        this may lead to error when generating: [external reference omitted]
 
         This function patch the generation_config created from model config to the pretrained model.
         """

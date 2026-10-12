@@ -103,7 +103,7 @@ class MegatronRewardModel(BasePPORewardModel):
             # 4. generate attention_mask and position_ids
             rm_attention_mask = torch.ones_like(rm_input_ids, device=input_ids.device)
             cur_seqlen = rm_input_ids.shape[-1]
-            # NOTE(gh): the later reward compute will process the shape (bs, seqlen_pad_128)
+            # NOTE: the later reward compute will process the shape (bs, seqlen_pad_128)
             if cur_seqlen > ori_seqlen:
                 print(f"warninig: rm encode seqlen {cur_seqlen} > sft encode seqlen {ori_seqlen}")
                 rm_input_ids = rm_input_ids[:ori_seqlen]
@@ -121,7 +121,7 @@ class MegatronRewardModel(BasePPORewardModel):
         position_ids_for_rm = torch.cat(position_ids_for_rm, dim=0)
 
         # (bs, seqlen) will not change, but input_ids, attention_mask and position_ids will change
-        # NOTE(gh): need to replace into origin values after compute reward!
+        # NOTE: need to replace into origin values after compute reward!
         data.batch["input_ids"] = input_ids_for_rm
         data.batch["attention_mask"] = attention_mask_for_rm
         data.batch["position_ids"] = position_ids_for_rm

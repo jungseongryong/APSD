@@ -3,8 +3,8 @@ updated 20251222
 # The ways verl integrates megatron-core
 There has been 3 ways that verl integrates megatron-core as it training backend:
 1. the codes inside this directory, which defines the conversion for new models one by one. (deprecated now)
-2. through [mbridge](https://github.com/ISEEKYAN/mbridge) (will be deprecated at about v0.8)
-3. through [megatron-bridge](https://github.com/NVIDIA-NeMo/Megatron-Bridge) (the official way for further development)
+2. through mbridge (will be deprecated at about v0.8)
+3. through megatron-bridge (the official way for further development)
 
 There is a configure option of `megatron.use_mbridge` to choose way#1 (false) or way#2 (true), and after the megatron-bridge is integrated we have a new option `megatron.vanilla_mbridge` to choose way#2 (true) or way#3 (false)
 
@@ -26,7 +26,7 @@ With the bridge way(#2 or #3), we can directly load and save the megatron model 
 
 # #Below are deprecated since 2025.12#
 # verl Megatron-Core Models
-Now we use [mbridge](https://github.com/iseekyan/mbridge) to support megatron models. And we will migrate to [megatron-bridge](https://github.com/NVIDIA-NeMo/Megatron-Bridge) in the future.
+Now we use mbridge to support megatron models. And we will migrate to megatron-bridge in the future.
 
 With the mbridge, we can use allmost all the Megatron-Core features to support new models with little effort. And no offline weights conversion is needed, all the weights conversion is done online. We can directly save the mcore model to huggingface format during training.
 
@@ -34,8 +34,8 @@ Also, we can easily upgrade the mcore version to the latest version. In most cas
 
 ## How to support new models
 1. make sure the model is supported by vLLM
-2. Support the model in [mbridge](https://github.com/iseekyan/mbridge), see its currently supported models for example.
-    - we will migrate to [megatron-bridge](https://github.com/NVIDIA-NeMo/Megatron-Bridge) in the future.
+2. Support the model in mbridge, see its currently supported models for example.
+    - we will migrate to megatron-bridge in the future.
 3. Register the model forward function in verl, see the example in `verl/verl/models/mcore/registry.py`.
 
 
@@ -64,7 +64,7 @@ Features we invite the community to contribute:
 - support llama4
 - support qwen2.5-vl
 
-To track the progress of verl mcore integration, please refer to the [mcore integration issue](https://github.com/volcengine/verl/issues/1033).
+To track the progress of verl mcore integration, please refer to the mcore integration issue.
 
 ## How things work now
 To engage the community in contributing, here are the key steps in our mcore integration process and features under development. 
@@ -117,7 +117,7 @@ The existing checkpoint format simply saves every rank's weights and optimizer s
 
 ## How to support new models
 1. make sure the model is supported by vLLM
-2. modelling the huggingface model with mcore `GPTModel` (The [Pai-Megatron-Path](https://github.com/alibaba/Pai-Megatron-Patch/tree/main) is a good reference)
+2. modelling the huggingface model with mcore `GPTModel` (The Pai-Megatron-Path is a good reference)
     - a. convert the huggingface config to mcore `TransformerConfig`
     - b. init the mcore `GPTModel` with the converted config
     - c. load the huggingface model weights to the `GPTModel`

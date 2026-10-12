@@ -28,7 +28,7 @@ except ImportError:
 from megatron.core.transformer.moe.router import TopKRouter
 from megatron.core.transformer.transformer_config import TransformerConfig
 
-# https://github.com/THUDM/slime/blob/main/slime/utils/routing_replay.py
+# [external reference omitted]
 
 
 class RouterReplayAction(Enum):

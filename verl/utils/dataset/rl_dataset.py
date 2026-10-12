@@ -343,7 +343,7 @@ class RLHFDataset(Dataset):
         row_dict: dict = self.dataframe[item]
         row_dict["raw_prompt"] = self._build_messages(row_dict)
 
-        # TODO(wuxibin): We still need a dummy tensor to make sure DataProto.batch is not empty.
+        # TODO: We still need a dummy tensor to make sure DataProto.batch is not empty.
         # Remove this after deprecate DataProto by TensorDict.
         row_dict["dummy_tensor"] = torch.tensor([0], dtype=torch.uint8)
 
